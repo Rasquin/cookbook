@@ -60,69 +60,11 @@ find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
 
 ### Existing Features
 
-The project consist of two scrolling pages and a contact page, each of them has
-a navbar and a footer.
-
-The 2 scrolling pages together sum 6 sections and the third page is for asking
-advice or telling your experience.
-
-The 1st scrolling page has 2 sections:
-a. The home: Big image of the city with links that invite the users to discover 
-the charm of Caracas. 
-b. About: Here the user can get a general description about Caracas (where is
-located, its weather, what to expect) and a map. The js file associated to this map 
-is the mapccs.js (mapccs stands for map Caracas)
-
-The 2nd scrolling page has 4 section:
-
-a. Attractions: small description of the principal sites of interest in the sity.
-
-b. Bar and Restaurants: tells the user what kind of food to expect in the city
-and give some advice of local dishes.
-
-c. Hotels: Small description of accommodation in the city.
-
-d. Interactive Map: the user can find what they would like to check inside the 
-city. Here is the list of possible type of place of the  select list:
- Attractions: Amusement Park, Art Gallery, Bowling, Casino, Church, Library, 
-Mosque, Movie Theater, Museum, Natural Area, Spa, Stadium, Synagogue and Zoo.
- Bar & Restaurants: Bar, Cafe, Night Club and Restaurants.
- Shopping: Book Store, Clothing Store, Convenience Store, Department Store, 
-Electronics Store, Florist, Jewelry Store, Liquor Store, Pet Store, Shoe Store, 
-Shopping Mall and Stores. 
- Accommodation: Hotels  and Campground.
- Others: Bakery, Car Rental and Supermarket.
-The js file associated to this map is the mapccsl.js (mapccsl stands for map 
-Caracas locations)
-
-And the 3rd page is the contact page, from where the users can ask for advice 
-and/or share their experience. The js file associated to this section  is the 
-sendEmail.js
-
-All pages have a navbar that allows the user to navegate between themselves and
-to the different sections of the scrolling pages. The user can also go back to 
-the top whenever he or she considers it necessary. They also share the footer,
-where you can find direct acces to the contact page and the social media links 
-( Facebook, Twitter and Instagram).
-
-As a user, you have to hover what you would like to check in the navbar and 
-click it. Then, you will be in the section that you have selected. If you want 
-to comunicate with the administrator of the website, you have to send a message 
-form that is available in the contact page. You can also check their social 
-media by clicking the respective icon in the inferior left corner of the 
-website, and you will be be redirected to a new browser window with the desired 
-content.
-
-The website also give you acces to more information outside the page. If you
-want to know more over a place given in the page, you only have to click over 
-the name of said place of interest, and the site will redirect you to Wikipedia
-or the respective web site.
-
-
-### Features Left to Implement
-. Let the user know about the rating and reviews of a desired place and give access to the website after looking 
-for it at the Select. Those characteristics are not  for free.
-. Allow the user to view the experiences of other people when visiting the city (blog)
+Routes:
+/cookbook --> cookbook() -->render template to cookbook.html
+/all_recipes --> all_recipes() --> render template to allrecipes.html
+/get_recipes --> get_recipes(category_id) --> render template to recipes.html
+/add_recipe --> add_recipe() --> render template to addrecipe.html
 
 ## Technologies Used
 
@@ -138,25 +80,11 @@ https://www.heroku.com/
 
 Libraries: 
 
-Bootstrap v4.1.3 scripts (JavaScript, jQuery and Popper.js) to get functionality 
-in the Bootstrap's components, and css  for most of the applied style
-http://getbootstrap.com/docs/4.1/getting-started/introduction/
+Materialize 1.0.0 https://materializecss.com/
 
-Bootstrap-Select v1.13.2 scripts and css to have a more interective and styled 
-select bottom https://developer.snapappointments.com/bootstrap-select/
+Google Icon Font
 
-Emailjs API  To link the message of the contact page to a email address 
-
-https://www.emailjs.com/
-Font awesome 5.6.1 to get the icons for location-arrow, map-marked, utensils, 
-bed, globe-americas, message box, facebook, twitter and instagram
-and CopyRight. https://fontawesome.com
-
-Google Map API to get the map of the about section with the location of Caracas 
-https://cloud.google.com/maps-platform/
-
-Google Map Places API to get the place though the SearchBox and show it in the
-map https://developers.google.com/places/web-service/intro
+ro
 
 Google Fonts, from here it is got the font type of the whole website 
 (ZCOOL XiaoWei) https://fonts.google.com/?selection.family=ZCOOL+XiaoWei
@@ -263,13 +191,7 @@ Text of Caracas Get to know our city was got from https://en.wikipedia.org/wiki/
 
 ### Media
 The photos used in this project are labelled  for reuse.
-The imagen for stepping stone was copied from Wikipedia https://en.wikipedia.org/wiki/I%27m_a_Believer#/media/File:The_Monkees_single_02_I%27m_a_Believer.jpg
-Backgroung image: Caracas1 https://sh.m.wikipedia.org/wiki/Datoteka:Caracas_Panoramica_1.jpg
-Collage of Caracas in the Get to Know our City section: Caracas3 https://commons.wikimedia.org/wiki/File:Caracas_Venezuela_VEN_2018.png
-Proceres https://commons.wikimedia.org/wiki/File:Paseo_Los_Pr%C3%B3ceres.jpg
-Pabellon https://commons.wikimedia.org/wiki/File:Pabellon-criollo2.jpg
-Bedroom https://get.pxhere.com/photo/white-floor-interior-home-cottage-property-furniture-room-bedroom-decor-interior-design-textile-design-bed-suite-duvet-cover-bed-sheet-bed-frame-828940.jpg
-
+The imagen for Good_Food_Display can be found in https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg
 ### External links
 
 Casa Natal & Museo Bolivar https://en.wikipedia.org/wiki/Birthplace_of_Sim%C3%B3n_Bol%C3%ADvar
@@ -297,3 +219,7 @@ origen, I grew up in this beautiful city and know most of its secrets. Because
 the political-economics and social situation I had to go out of the country to 
 look for a better life. Hoping that someday everything will go back to normal 
 and my city will be open to receive a big amount of tourism.
+
+
+
+      

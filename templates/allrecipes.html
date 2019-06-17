@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!-- -------------------------------------------------------------Home Section -->
+	<div class="container-fluid home-container">
+
+    <div class="container-cookbook  container-fluid">
+  		
+  			<div class="row border border-dark title-cookbook">
+  				<div class="col-12 text-center">
+  					<h2><strong>All Recipes</strong></h2>
+  				</div>
+  			</div>
+  		
+  			<div class="row title-cook-today">
+  				<div class="col-12 text-center">
+  					<h3>Here you can check all our recipes</h3>
+  				</div>
+  			</div>
+		
+		</div>
+		
+	</div>
+
+<!-- -------------------------------------------------------------All Recipes Section -->
+
+{% for recipe in recipes %}
+
+{% if loop.index % 2 != 0 %}
+
+<div class="container-recipe bg-soft-yellow">
+    <div class="row container-fluid">
+        <div class="col-6">
+            <div class="row container-fluid">
+                <div class="col-12">
+                    <a href=""><strong>{{recipe.recipe_name}}</strong></a>
+                </div>
+            </div>
+            <div class="row container-fluid">
+                <div class="col-12">
+                    Likes
+                </div>  
+            </div>
+            <div class="row container-fluid">
+                <div class="col-12">
+                    {{recipe.difficulty_level}}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <img src="{{recipe.recipe_image_url}}" alt="{{recipe.recipe_name}}">
+        </div>
+    </div>
+</div> 
+{% else %}
+<div class="container-recipe bg-white">
+    <div class="row container-fluid">
+        <div class="col-6">
+            <div class="row container-fluid">
+                <div class="col-12">
+                    <a href=""><strong>{{recipe.recipe_name}}</strong></a>
+                </div>
+            </div>
+            <div class="row container-fluid">
+                <div class="col-12">
+                    Likes
+                </div>  
+            </div>
+            <div class="row container-fluid">
+                <div class="col-12">
+                    {{recipe.difficulty_level}}
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <img src="{{recipe.recipe_image_url}}" alt="{{recipe.recipe_name}}">
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}

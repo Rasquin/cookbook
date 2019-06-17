@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- -------------------------------------------------------------Home Section -->
+	<div class="container-fluid home-container">
+
+    <div class="container-cookbook  container-fluid">
+  		
+  			<div class="row border border-dark title-cookbook">
+  				<div class="col-12 text-center">
+  					<h1><strong>MONICA'S COOKBOOK</strong></h1>
+  				</div>
+  			</div>
+  		
+  			<div class="row title-cook-today">
+  				<div class="col-12 text-center">
+  					<h2>What would you like to eat today?</h2>
+  				</div>
+  			</div>
+		
+		</div>
+		
+	</div>
+	
+	
+<!-- -------------------------------------------------------------New Recipes Section -->
+
+<!-- ---------------------------------------------------------Most Liked Recipes Section -->	
+
+<!-- -------------------------------------------------------------Categories Section -->
+{% for category in categories %}
+
+{% if loop.index % 2 != 0 %}
+<div class="container-category">
+    <div class="row container-fluid">
+      <div class="col-6">
+        <a href="{{url_for('get_recipes', category_id=category._id)}}"><strong>{{category.category_name}}</strong></a>
+      </div>
+      <div class="col-6 d-none d-md-block">
+        <img src="{{category.category_image}}" alt="{{category.category_name}}"></img>
+      </div>
+  </div>
+</div>
+{% else %}
+<div class="container-category">
+    <div class="row container-fluid">
+      <div class="col-6 d-none d-md-block">
+        <img src="{{category.category_image}}" alt="{{category.category_name}}"></img>
+      </div>
+      <div class="col-6">
+        <a href="{{url_for('get_recipes', category_id=category._id)}}"><strong>{{category.category_name}}</strong></a>
+      </div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+
+{% for category in categories %}
+      {{category.category_name}}
+  {%endfor %}
+  
+<!--
+{% for recipe in recipes %}
+    {{recipe.recipe_name}}
+  {{recipe.category}}
+    {{recipe.difficulty_level}}
+   
+
+    {{recipe.likes}}
+    {{recipe.dislikes}}
+    {{recipe.liked_by}}
+    {{recipe.disliked_by}}
+    {{recipe.timestamp}}
+    
+ {% endfor %}
+-->
+{% endblock %}

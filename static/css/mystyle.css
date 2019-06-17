@@ -1,0 +1,80 @@
+body {
+    background-color: #ffc107;
+    
+}
+.home-container {
+    background-image: url('../images/Good_Food_Display.jpg');
+    height: 50vh;
+    background-size: cover;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+   
+    margin: 0;
+}
+
+.title-cookbook {
+    background-color: white;
+    color: black;
+    text-shadow: 5px 5px 10px black;
+    letter-spacing: 3px;
+
+}
+
+.title-cook-today {
+    color: white;
+    text-shadow: 5px 5px 10px black;
+}
+
+.container-category img {
+    width: 400px;
+    height: 300px;
+}
+
+
+/*----------------------------------- Recipe List*/
+
+.title-category-image {
+    height: 50vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin: 0;
+}
+
+.container-title-category-image{
+    background-image: url('{{category.category_image}}');
+    height: 50vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin: 0;
+}
+
+.container-recipe {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.container-recipe img {
+    width: 200px;
+    height: 150px;
+}
+
+/*----------------------------------- All Recipe List*/
+.bg-soft-yellow{
+    background-color: #e7e0c9d1;
+}
+.bg-white{
+    background-color: white;
+}
+/*----------------------------------- MEDIA QUERIES*/
+
