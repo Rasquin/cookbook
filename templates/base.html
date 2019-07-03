@@ -1,33 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Monica's CookBook</title>
-    
+
     <!--jQuery before materialize.css for good css loading-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+
     <!-- -------------------------------------------------------STYLES-->
     <!--Bootstrap 4.3.1 CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!--Bootstrap-Select v1.13.9 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
     <!--Own CSS-->
-    <link rel="stylesheet" href="static/css/mystyle.css" type="text/css" />
-    
+    <link rel="stylesheet" href="/static/css/mystyle.css" type="text/css" />
+
     <!-- -------------------------------------------------------SCRIPTS-->
     <script src="https://kit.fontawesome.com/a86854b533.js"></script>
-      
-    
+
+
 </head>
+
 <body>
     <header>
-    
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="{{url_for('cookbook')}}">COOKBOOK</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>         
+            </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
@@ -41,6 +45,7 @@
                             <a class="dropdown-item" href="#">New Recipes</a>
                             <a class="dropdown-item" href="#">Most Liked Recipes</a>
                             <a class="dropdown-item" href="{{url_for('all_recipes')}}">All Recipes</a>
+                            <a class="dropdown-item" href="{{url_for('add_recipe')}}">Add Recipe</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -58,48 +63,95 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">Registrer</a>
                     </li>
-                    
+
                 </ul>
             </div>
-            
+
         </nav>
-    
+
     </header>
-    
-    {% block content %}
-    {% endblock %}
-    
+
+    {% block content %} {% endblock %}
+
     <footer class="container-fluid">
-		
 
-		<!----------------------------------------------------------------------------SOCIAL MEDIA-->
-		<div class="row ">
-			<div class="col-12 text-center">
-				<h5 class="text-uppercase">Follow Us</h5>
-				<ul class="list-inline social-links">
-					<li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-pinterest-square"  aria-hidden="true"></i></a></li>
-					<li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-twitter-square" aria-hidden="true"></i></a></li>
-					<li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-				</ul>
-			</div>
-		</div>
-		
-		<!-------------------------------------------------------------------------------COPYRIGHT-->
-		<div class="row ">
-			<div class="col-12">
 
-				<p class="text-center text-uppercase">CopyRight Monica Rasquin <i class="far fa-copyright"></i> </p>
-			</div>
-		</div>
-	</footer>
-	
+        <!----------------------------------------------------------------------------SOCIAL MEDIA-->
+        <div class="row ">
+            <div class="col-12 text-center">
+                <h5 class="text-uppercase">Follow Us</h5>
+                <ul class="list-inline social-links">
+                    <li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-pinterest-square"  aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-twitter-square" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-------------------------------------------------------------------------------COPYRIGHT-->
+        <div class="row ">
+            <div class="col-12">
+
+                <p class="text-center text-uppercase">CopyRight Monica Rasquin <i class="far fa-copyright"></i> </p>
+            </div>
+        </div>
+    </footer>
+
     <!-- ----------------------------------------------------- SCRIPTS-->
-    <!-- scripts from Bootstrap-->
+    <!-- Bootstrap 4.3.1 scripts-->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+    <!-- Bootstrap-Select v1.13.9 scripts-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
     <!-----------------------------------------------------------------jQuery-->
+   <script type="text/javascript">
+       $(document).ready(function() {
+           
+           //Ingredients Add
+           var max_ingredients = 20; //maximum input boxes allowed
+           var wrapper_ingredient = $(".input_ingredient_wrap"); //Fields wrapper
+           var add_ingredient_button = $(".add_ingredient_button"); //Add button ID
+           var number_of_ingredient = 1; //initlal text box ingredient count
+           
    
+           
+           $(add_ingredient_button).click(function(e) { //on add input button click
+               e.preventDefault();
+               if (number_of_ingredient < max_ingredients) { //max input box allowed
+                   number_of_ingredient++; //text box increment
+                   $(wrapper_ingredient).append('<div><input type="text" name="ingredients[]"/><a href="#" class="remove_ingredient">Remove</a></div>'); //add input box
+               }
+           });
+   
+           $(wrapper_ingredient).on("click", ".remove_ingredient", function(e) { //user click on remove text
+               e.preventDefault();
+               $(this).parent('div').remove();
+               number_of_ingredient--;
+           })
+           
+           //Method Add
+           var max_method = 20; //maximum input boxes allowed
+           var wrapper_method = $(".input_method_wrap"); //Steeps wrapper
+           var add_method_button = $(".add_method_button"); //Add button ID
+           var number_of_method = 1; //initlal text box method count
+           
+           $(add_method_button).click(function(m) { //on add input button click
+               m.preventDefault();
+               if (number_of_method < max_method) { //max input box allowed
+                   number_of_method++; //text box increment
+                   $(wrapper_method).append('<textarea class="form-control" id="method[]" rows="2" placeholder="Steeps"></textarea><a href="#" class="remove_method">Remove</a>'); //add input box
+               }
+           });
+   
+           $(wrapper_method).on("click", ".remove_method", function(m) { //user click on remove text
+               m.preventDefault();
+               $(this).parent('div').remove();
+               number_of_method--;
+           })
+       });
+    </script>
 </body>
+
 </html>

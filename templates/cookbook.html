@@ -32,24 +32,24 @@
 {% for category in categories %}
 
 {% if loop.index % 2 != 0 %}
-<div class="container-category">
+<div class="container-category bg-soft-yellow">
     <div class="row container-fluid">
-      <div class="col-6">
-        <a href="{{url_for('get_recipes', category_id=category._id)}}"><strong>{{category.category_name}}</strong></a>
+      <div class="col-6 text-center align-self-center">
+        <a href="{{url_for('get_recipes', category_id=category._id)}}" class="text-decoration-none"><strong>{{category.category_name}}</strong></a>
       </div>
-      <div class="col-6 d-none d-md-block">
+      <div class="col-6 d-none d-md-block category-image">
         <img src="{{category.category_image}}" alt="{{category.category_name}}"></img>
       </div>
   </div>
 </div>
 {% else %}
-<div class="container-category">
+<div class="container-category bg-white">
     <div class="row container-fluid">
       <div class="col-6 d-none d-md-block">
         <img src="{{category.category_image}}" alt="{{category.category_name}}"></img>
       </div>
-      <div class="col-6">
-        <a href="{{url_for('get_recipes', category_id=category._id)}}"><strong>{{category.category_name}}</strong></a>
+      <div class="col-6 text-center align-self-center">
+        <a href="{{url_for('get_recipes', category_id=category._id)}}" class="text-decoration-none"><strong>{{category.category_name}}</strong></a>
       </div>
   </div>
 </div>

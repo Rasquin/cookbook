@@ -1,5 +1,215 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 
-{% block content %}
+<!-- -------------------------------------------------------------Title  Section -->
+<div class="container-fluid add-recipe-title-container">
+
+    <div class="container-fluid">
+
+        <div class="row border border-dark title-cookbook">
+            <div class="col-12 text-center">
+                <h2><strong>Add a New Recipe!</strong></h2>
+            </div>
+        </div>
+
+        <div class="row title-cook-today">
+            <div class="col-12 text-center">
+                <h3>Share with all of us your recipe, so everybody can enjoy of such delicious food</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- -------------------------------------------------------------Form  Section -->
+
+<div class="row container-fluid container-add-recipe bg-soft-yellow">
+
+    <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
+        
+        <!-- ----------------------------------Elements Filled by the the user -->
+        
+        <!-- ---------Recipe Name -->
+        <div class="form-group">
+            <label for="recipe_name" class="font-weight-bold">Recipe Name</label>
+            <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Write here te name of your recipe">
+        </div>
+        
+         <!-- ---------Recipe Author -->
+        <div class="form-group">
+            <label for="recipe_name" class="font-weight-bold">Author</label>
+            <input type="text" class="form-control" id="author" name="author" placeholder="Author of recipe">
+        </div>
+        
+        <!-- ---------Recipe Author Country of Origin -->
+        <div class="form-group">
+            <label for="author_country" class="font-weight-bold">Author Country of Origin</label>
+            <input type="text" class="form-control" id="author_country" name="author_country" placeholder="Author of recipe">
+        </div>
+        
+
+        <!-- ---------Recipe Category -->
+        <div class="form-group">
+            <label for="recipe_category" class="font-weight-bold">Category</label>
+            <select class="selectpicker" id="recipe_category" name="recipe_category" data-width="100%">
+                {% for category in categories %}
+                <option>{{category.category_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <!-- ---------Recipe Cuisine -->
+        <div class="form-group">
+            <label for="cuisine" class="font-weight-bold">Cuisine</label>
+            <select class="selectpicker" id="cuisine" name="cuisine" data-width="100%">
+                {% for cuisine in cuisines %}
+                <option>{{cuisine.cuisine_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- ---------Recipe Description -->
+        <div class="form-group">
+            <label for="recipe_description" class="font-weight-bold">Description</label>
+            <textarea class="form-control" id="recipe_description" name="recipe_description"  rows="3" placeholder="Tell us something interesting about your recipe"></textarea>
+        </div>
+
+        <!-- ---------Recipe Potions -->
+        <div class="form-group">
+            <label for="number_of_portions" class="font-weight-bold">Portions</label>
+            <textarea class="form-control" id="number_of_portions" name="number_of_portions" rows="1" placeholder="How many people is your recipe for? How much food will be done here?"></textarea>
+        </div>
+
+        <!-- ---------Recipe Difficulty Level -->
+        <div class="form-group">
+            <label for="difficulty_level" class="font-weight-bold">Level of difficulty</label>
+            <select class="selectpicker" id="difficulty_level" name="difficulty_level" data-width="100%">
+                <option>Easy</option>
+                <option>Medium</option>
+                <option>Hard</option>
+            </select>
+        </div>
+
+        <!-- ---------Recipe Allergens -->
+        <div class="form-group">
+            <label class="font-weight-bold">Possible allergens</label>
+            <select multiple class="selectpicker" id="recipe_allergens" name="recipe_allergens" data-width="100%">
+                {% for allergen in allergens %}
+                    <option value="{{allergen.allergen_name}}">{{allergen.allergen_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <!-- ---------Recipe Ingredients & Image area -->
+        <div class="row">
+            <!-- ---------Recipe Ingredients -->
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="ingredients" class="font-weight-bold">Ingredients</label>
+                        </div>
+                    </div>
+                    <div class="input_ingredient_wrap">
+                        <div class="row">
+                            <div class="col-12">
+                                <button class="add_ingredient_button">Add More Ingredients</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div><input type="text" name="ingredients[]"></div>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            </div>
+            
+            <!-- ---------Recipe Image -->
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-12">
+                            <label for="recipe_image" class="font-weight-bold"> Image</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="file" name="recipe_image" value="recipe_image" id="recipe_image" placeholder="Select a image for your recipe">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <!-- ---------Recipe Method -->
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <label for="method" class="font-weight-bold">Method</label>
+                </div>
+            </div>
+            <div class="input_method_wrap">
+                <div class="row">
+                    <div class="col-12">
+                        <button class="add_method_button">Add More Steeps</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div><textarea class="form-control" id="method" name="method" rows="2" placeholder="Tell us something interesting about your recipe"></textarea></div> 
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ----------------------------------Elements NO filled by the the user -->
+       
+        <!-- ---------Recipe Likes -->
+        <div class="form-group d-none">
+            <label for="likes" class="font-weight-bold">Likes</label>
+            <input type="text" class="form-control" id="likes" name="likes"placeholder="Number of likes" value="0">
+        </div>
+        
+        <!-- ---------Recipe Dislikes -->
+        <div class="form-group d-none">
+            <label for="dislikes" class="font-weight-bold">Dislikes</label>
+            <input type="text" class="form-control" id="dislikes" name="dislikes" placeholder="Number of dislikes" value="0">
+        </div>
+        
+        <!-- ---------Recipe Liked By -->
+        <div class="form-group d-none">
+            <label for="liked_by" class="font-weight-bold">Users that Liked this Recipe</label>
+            <input type="text" class="form-control" id="liked_by" name="liked_by" placeholder="Liked by" value="null">
+        </div>
+        
+        <!-- ---------Recipe Disliked by -->
+        <div class="form-group d-none">
+            <label for="disliked_by" class="font-weight-bold">Users that did not liked this recipe</label>
+            <input type="text" class="form-control" id="disliked_by" name="disliked_by" placeholder="Disliked by" value="null">
+        </div>
+        
+        <!-- ---------Recipe Views -->
+        <div class="form-group d-none">
+            <label for="views" class="font-weight-bold">Views</label>
+            <input type="text" class="form-control" id="views" name="views" placeholder="Number of views" value="0">
+        </div>
+        
+        <!-- ---------Recipe timestamp -->
+        <div class="form-group d-none">
+            <label for="timestamp" class="font-weight-bold">Timestamp</label>
+            <input type="text" class="form-control" id="timestamp" name="timestamp" placeholder="Author of recipe" value="0">
+        </div>
+        
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-outline-primary" type="submit">Add Recipe</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
 
 {% endblock %}

@@ -2,17 +2,17 @@ body {
     background-color: #ffc107;
     
 }
+
+/*----------------------------------------------------------------- HOME*/
 .home-container {
     background-image: url('../images/Good_Food_Display.jpg');
     height: 50vh;
     background-size: cover;
-
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     position: relative;
-   
     margin: 0;
 }
 
@@ -29,13 +29,19 @@ body {
     text-shadow: 5px 5px 10px black;
 }
 
+.container-category {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
 .container-category img {
-    width: 400px;
+    
+    width: 500px;
     height: 300px;
 }
 
 
-/*----------------------------------- Recipe List*/
+/*--------------------------------------------------------------- Recipe List*/
 
 .title-category-image {
     height: 50vh;
@@ -61,20 +67,63 @@ body {
 }
 
 .container-recipe {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .container-recipe img {
     width: 200px;
     height: 150px;
 }
 
-/*----------------------------------- All Recipe List*/
+/*------------------------------------------------------------ All Recipe List*/
 .bg-soft-yellow{
     background-color: #e7e0c9d1;
 }
 .bg-white{
     background-color: white;
 }
+
+/*----------------------------------------------------------------- The recipe*/
+.image-recipe-title {
+    height: 25vh;
+    width: 100%;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin: 0;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ffc107!important;
+}
+
+.border-top {
+    border-top: 1px solid #ffc107!important;
+}
+
+.container-the-recipe{
+    background-color: white;
+}
+
+/*--------------------------------------------------- Add Recipe*/
+.add-recipe-title-container{
+    background-image: url('../images/condiments.jpg');
+    height: 50vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    margin: 0;
+}
+
+.container-add-recipe{
+    margin: 0;
+} 
+
 /*----------------------------------- MEDIA QUERIES*/
 

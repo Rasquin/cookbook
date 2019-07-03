@@ -63,8 +63,9 @@ find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
 Routes:
 /cookbook --> cookbook() -->render template to cookbook.html
 /all_recipes --> all_recipes() --> render template to allrecipes.html
-/get_recipes --> get_recipes(category_id) --> render template to recipes.html
+/get_recipes/<category_id> --> get_recipes(category_id) --> render template to recipesbycategory.html
 /add_recipe --> add_recipe() --> render template to addrecipe.html
+'/the_recipe/<recipe_id>  -->  the_recipe(recipe_id) --> render template to recipe.html
 
 ## Technologies Used
 
@@ -79,8 +80,12 @@ Heroku
 https://www.heroku.com/
 
 Libraries: 
+Bootstrap v4.3.1 scripts (JavaScript, jQuery and Popper.js) to get functionality 
+in the Bootstrap's components, and css  for most of the applied style
+https://getbootstrap.com/docs/4.3/getting-started/introduction/
 
-Materialize 1.0.0 https://materializecss.com/
+Bootstrap-Select v1.13.9 scripts and css to have a more interective and styled 
+select bottom https://developer.snapappointments.com/bootstrap-select/
 
 Google Icon Font
 

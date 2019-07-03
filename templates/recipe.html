@@ -1,4 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
 
+<!-- -------------------------------------------------------------Title Section -->
+
+	
+	<div class="recipe-title">
+  			
+	<img class="image-recipe-title" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
+		
+	</div>
+
+<!-- -------------------------------------------------------------Recipe Section -->
+<div class="container-the-recipe">
+  
+  <!-- ---------Recipe Name, views & likes -->
+  <div class="row  border-top border-bottom">
+    <div class="col-12">
+      <h3>{{recipe.recipe_name}} - <spam class="font-italic">(Views {{recipe.views}}) - <i class="fa fa-heart text-danger" aria-hidden="true"></i> {{recipe.likes}} </spam></h3>
+    </div>
+  </div>
+  
+  <!-- ---------Recipe Author & Author Country -->
+  <div class="row">
+    <div class="col-12"><p> This recipe has been written by {{recipe.author}} from {{recipe.author_country}}.</p></div>
+  </div>
+  
+  <!-- ---------Recipe Category -->
+  <div class="row">
+    <div class="col-12"><p> <span class="font-weight-bold">Category: </span>{{recipe.recipe_category}}.</p></div>
+  </div>
+  
+  <!-- ---------Recipe Cuisine -->
+  <div class="row">
+    <div class="col-12"><p> <span class="font-weight-bold">Cuisine: </span>{{recipe.cuisine}}.</p></div>
+  </div>
+  
+  <!-- ---------Recipe Description -->
+  <div class="row">
+    <div class="col-12">
+       <p class="font-weight-bold">Description: </p>
+      <p>{{recipe.recipe_description}}</p></div>
+  </div>
+  
+  <!-- ---------Recipe Portions -->
+   <div class="row">
+    <div class="col-12"><p> <span class="font-weight-bold">Portions: </span>{{recipe.number_of_portions}}.</p></div>
+  </div>
+  
+  <!-- ---------Recipe Difficulty Level -->
+  <div class="row">
+    <div class="col-12"> <p>  <span class="font-weight-bold">Level of difficulty: </span> {{recipe.difficulty_level}}.</p></div>
+  </div>
+  
+  <!-- ---------Recipe Allergens -->
+  <div class="row">
+    <div class="col-12">
+      <p class="font-weight-bold">Possible allargens:</p> 
+      <ul>
+      {% for allergen in recipe.recipe_allergens %}
+        <li>{{ allergen }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <!-- ---------Recipe Ingredients -->
+  <div class="row">
+    <div class="col-12">
+    <p class="font-weight-bold">Ingredients:</p> 
+      <ul>
+        {% for ingredient in recipe.ingredients %}
+            <li>{{ ingredient }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  
+  <!-- ---------Recipe Method -->
+  <div class="row">
+    <div class="col-12">
+      <p class="font-weight-bold">Method:</p> 
+      <ol>
+        {% for step in recipe.method %}
+        <li>{{ step }}</li>
+        {% endfor %}
+      </ol>
+      </div>
+  </div>
+  
+  
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  
+    
+    
+    {{recipe.timestamp}}
+
+    {{recipe.tips}}
+    {{recipe.likes}}
+    {{recipe.dislikes}}
+    {{recipe.liked_by}}
+    {{recipe.disliked_by}}
+    
+</div>
+
+    
+{% endblock %}
   
   <!-- ----------------------------------------------------- SCRIPTS
  {{recipe.recipe_name}}

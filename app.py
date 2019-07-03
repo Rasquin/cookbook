@@ -23,11 +23,27 @@ def all_recipes():
 def get_recipes(category_id):
     the_category=  mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     all_recipes =  mongo.db.recipes.find()
-    return render_template("recipes.html", recipes=all_recipes,  category=the_category)
+    return render_template("recipesbycategory.html", recipes=all_recipes,  category=the_category)
+
+@app.route('/the_recipe/<recipe_id>')
+def the_recipe(recipe_id):
+    the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    
+   # allergens= the_recipe.allergens
+    #ingredients= the_recipe.ingredients
+    #method= the_recipe.method
+    return render_template("recipe.html", recipe=the_recipe)
 
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html', categories=mongo.db.categories.find())
+    return render_template('addrecipe.html', categories=mongo.db.categories.find(), allergens=mongo.db.allergens.find(), cuisines=mongo.db.cuisines.find())
+    
+@app.route('/inser_recipe', methods=['POST'])
+def insert_recipe():
+    recipes = mongo.db.recipes
+    recipes.insert_one(request.form.to_dict())
+    print (request.form.to_dict())
+    return redirect(url_for('cookbook'))
 
 
 #@app.route('/edit_recipe/<recipe_id>')

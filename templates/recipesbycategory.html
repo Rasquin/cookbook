@@ -1,31 +1,26 @@
 {% extends 'base.html' %}
+
 {% block content %}
 
+<img src="{{category.category_image}}" alt="{{category.category_name}}">
 
-<!-- -------------------------------------------------------------Title Section -->
-	<div class="container-fluid home-container">
-
-    <div class="container-fluid">
+<div class="container-fluid " >
+	  
+	   <div class="container-title-category-image">
   		
   			<div class="row border border-dark title-cookbook">
   				<div class="col-12 text-center">
-  					<h2><strong>All Recipes</strong></h2>
+  					<h2><strong>{{category.category_name}}</strong></h2>
   				</div>
   			</div>
   		
-  			<div class="row title-cook-today">
-  				<div class="col-12 text-center">
-  					<h3>Here you can check all our recipes</h3>
-  				</div>
-  			</div>
 		
 		</div>
 		
 	</div>
 
-<!-- -------------------------------------------------------------All Recipes Section -->
-
 {% for recipe in recipes %}
+{% if recipe.recipe_category == category.category_name %}
 
 {% if loop.index % 2 != 0 %}
 
@@ -79,7 +74,7 @@
     </div>
 </div>
 {% endif %}
-
+{% endif %}
 {% endfor %}
 
 <div class="row container-fluid">
@@ -89,4 +84,22 @@
 </div>
 
 
+
+
+  
+<!--
+{% for recipe in recipes %}
+    {{recipe.recipe_name}}
+  {{recipe.category}}
+    {{recipe.difficulty_level}}
+   
+
+    {{recipe.likes}}
+    {{recipe.dislikes}}
+    {{recipe.liked_by}}
+    {{recipe.disliked_by}}
+    {{recipe.timestamp}}
+    
+ {% endfor %}
+-->
 {% endblock %}
