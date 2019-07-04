@@ -14,46 +14,46 @@
 <div class="container-the-recipe">
   
   <!-- ---------Recipe Name, views & likes -->
-  <div class="row  border-top border-bottom">
+  <div class="row  container-fluid border-top border-bottom">
     <div class="col-12">
       <h3>{{recipe.recipe_name}} - <spam class="font-italic">(Views {{recipe.views}}) - <i class="fa fa-heart text-danger" aria-hidden="true"></i> {{recipe.likes}} </spam></h3>
     </div>
   </div>
   
   <!-- ---------Recipe Author & Author Country -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12"><p> This recipe has been written by {{recipe.author}} from {{recipe.author_country}}.</p></div>
   </div>
   
   <!-- ---------Recipe Category -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12"><p> <span class="font-weight-bold">Category: </span>{{recipe.recipe_category}}.</p></div>
   </div>
   
   <!-- ---------Recipe Cuisine -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12"><p> <span class="font-weight-bold">Cuisine: </span>{{recipe.cuisine}}.</p></div>
   </div>
   
   <!-- ---------Recipe Description -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12">
        <p class="font-weight-bold">Description: </p>
       <p>{{recipe.recipe_description}}</p></div>
   </div>
   
   <!-- ---------Recipe Portions -->
-   <div class="row">
+   <div class="row container-fluid">
     <div class="col-12"><p> <span class="font-weight-bold">Portions: </span>{{recipe.number_of_portions}}.</p></div>
   </div>
   
   <!-- ---------Recipe Difficulty Level -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12"> <p>  <span class="font-weight-bold">Level of difficulty: </span> {{recipe.difficulty_level}}.</p></div>
   </div>
   
   <!-- ---------Recipe Allergens -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12">
       <p class="font-weight-bold">Possible allargens:</p> 
       <ul>
@@ -65,7 +65,7 @@
   </div>
   
   <!-- ---------Recipe Ingredients -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12">
     <p class="font-weight-bold">Ingredients:</p> 
       <ul>
@@ -77,7 +77,7 @@
   </div>
   
   <!-- ---------Recipe Method -->
-  <div class="row">
+  <div class="row container-fluid">
     <div class="col-12">
       <p class="font-weight-bold">Method:</p> 
       <ol>
@@ -88,23 +88,30 @@
       </div>
   </div>
   
-  
-  <div class="row">
-    <div class="col-12"></div>
+  <!-- ---------Recipe Edit & Delete button -->
+  <div class="row container-fluid">
+    <div class="col-12">
+      <p class="text-center">
+      <a class="btn btn-primary center" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit</a>
+      <a class="btn btn-primary center" href="{{url_for('cookbook')}}" role="button">Delete</a>
+      </p>
+    </div>
+    
   </div>
   <div class="row">
     <div class="col-12"></div>
   </div>
   
-    
-    
+  
+  
+  <div class="d-none">
     {{recipe.timestamp}}
-
     {{recipe.tips}}
     {{recipe.likes}}
     {{recipe.dislikes}}
     {{recipe.liked_by}}
     {{recipe.disliked_by}}
+  </div>    
     
 </div>
 

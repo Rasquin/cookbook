@@ -54,18 +54,6 @@ body {
     margin: 0;
 }
 
-.container-title-category-image{
-    background-image: url('{{category.category_image}}');
-    height: 50vh;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    position: relative;
-    margin: 0;
-}
-
 .container-recipe {
     padding-top: 5px;
     padding-bottom: 5px;
@@ -84,7 +72,7 @@ body {
 }
 
 /*----------------------------------------------------------------- The recipe*/
-.image-recipe-title {
+.recipe-title img {
     height: 25vh;
     width: 100%;
     background-size: cover;

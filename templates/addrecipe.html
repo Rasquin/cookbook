@@ -24,7 +24,7 @@
 
 <div class="row container-fluid container-add-recipe bg-soft-yellow">
 
-    <form action="{{ url_for('insert_recipe') }}" method="POST" class="col-12">
+    <form action="{{ url_for('insert_recipe'}}" method="POST" class="col-12">
         
         <!-- ----------------------------------Elements Filled by the the user -->
         
@@ -52,7 +52,7 @@
             <label for="recipe_category" class="font-weight-bold">Category</label>
             <select class="selectpicker" id="recipe_category" name="recipe_category" data-width="100%">
                 {% for category in categories %}
-                <option>{{category.category_name}}</option>
+                <option value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -62,7 +62,7 @@
             <label for="cuisine" class="font-weight-bold">Cuisine</label>
             <select class="selectpicker" id="cuisine" name="cuisine" data-width="100%">
                 {% for cuisine in cuisines %}
-                <option>{{cuisine.cuisine_name}}</option>
+                <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
                 {% endfor %}
             </select>
         </div>
@@ -83,9 +83,9 @@
         <div class="form-group">
             <label for="difficulty_level" class="font-weight-bold">Level of difficulty</label>
             <select class="selectpicker" id="difficulty_level" name="difficulty_level" data-width="100%">
-                <option>Easy</option>
-                <option>Medium</option>
-                <option>Hard</option>
+                {% for dif in difficulty %}
+                <option value="{{dif.level}}">{{dif.level}}</option>
+                {% endfor %}
             </select>
         </div>
 
@@ -128,17 +128,10 @@
             <!-- ---------Recipe Image -->
             <div class="col-12 col-md-6">
                 <div class="form-group">
-                    <div class="row">
-                        <div class="col-12">
-                            <label for="recipe_image" class="font-weight-bold"> Image</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <input type="file" name="recipe_image" value="recipe_image" id="recipe_image" placeholder="Select a image for your recipe">
-                        </div>
-                    </div>
+                    <label for="recipe_image" class="font-weight-bold">Image</label>
+                    <input type="text" class="form-control" id="recipe_image" name="recipe_image" placeholder="Paste the URL of your recipe image">
                 </div>
+                
             </div>
         </div>
       

@@ -2,44 +2,52 @@
 
 {% block content %}
 
-<img src="{{category.category_image}}" alt="{{category.category_name}}">
+<div class="recipe-title">
+    <img src="{{category.category_image}}" alt="{{category.category_name}}">
+</div>
 
-<div class="container-fluid " >
-	  
-	   <div class="container-title-category-image">
-  		
-  			<div class="row border border-dark title-cookbook">
-  				<div class="col-12 text-center">
-  					<h2><strong>{{category.category_name}}</strong></h2>
-  				</div>
-  			</div>
-  		
-		
-		</div>
-		
-	</div>
+<div class="container-fluid ">
+    <div class="row border border-dark title-cookbook">
+        <div class="col-12 text-center">
+            <h2><strong>{{category.category_name}}</strong></h2>
+        </div>
+    </div>
+</div>
 
 {% for recipe in recipes %}
 {% if recipe.recipe_category == category.category_name %}
 
-{% if loop.index % 2 != 0 %}
 
+<!-- --Recipes in soft yellow container -->
+{% if loop.index % 2 != 0 %}
 <div class="container-recipe bg-soft-yellow">
     <div class="row container-fluid">
         <div class="col-6">
+            <!-- Recipe Name-->
             <div class="row container-fluid">
                 <div class="col-12">
                     <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
                 </div>
             </div>
+            <!-- Likes-->
             <div class="row container-fluid">
                 <div class="col-12">
                     Likes
                 </div>  
             </div>
+            <!-- Difficulty level-->
             <div class="row container-fluid">
                 <div class="col-12">
                     {{recipe.difficulty_level}}
+                </div>
+            </div>
+            <!-- Edit and Delete buttons-->
+            <div class="row container-fluid">
+                <div class="col-12">
+                    <p class="text-center">
+                        <a class="btn btn-primary center" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit</a>
+                        <a class="btn btn-primary center" href="{{url_for('cookbook')}}" role="button">Delete</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -48,23 +56,37 @@
         </div>
     </div>
 </div> 
+
+<!-- --Recipes in white  container -->
 {% else %}
 <div class="container-recipe bg-white">
     <div class="row container-fluid">
         <div class="col-6">
+            <!-- Recipe Name-->
             <div class="row container-fluid">
                 <div class="col-12">
                     <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
                 </div>
             </div>
+            <!-- Likes-->
             <div class="row container-fluid">
                 <div class="col-12">
                     Likes
                 </div>  
             </div>
+            <!-- Difficulty level-->
             <div class="row container-fluid">
                 <div class="col-12">
                     {{recipe.difficulty_level}}
+                </div>
+            </div>
+            <!-- Edit and Delete buttons-->
+            <div class="row container-fluid">
+                <div class="col-12">
+                    <p class="text-center">
+                        <a class="btn btn-primary center" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit</a>
+                        <a class="btn btn-primary center" href="{{url_for('cookbook')}}" role="button">Delete</a>
+                    </p>
                 </div>
             </div>
         </div>

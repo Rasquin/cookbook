@@ -34,9 +34,10 @@ def the_recipe(recipe_id):
     #method= the_recipe.method
     return render_template("recipe.html", recipe=the_recipe)
 
+#-------------------------------------------------------------- Adding New Recipe
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template('addrecipe.html', categories=mongo.db.categories.find(), allergens=mongo.db.allergens.find(), cuisines=mongo.db.cuisines.find())
+    return render_template('addrecipe.html', categories=mongo.db.categories.find(), difficulty=mongo.db.difficulty.find(), cuisines=mongo.db.cuisines.find(), allergens=mongo.db.allergens.find())
     
 @app.route('/inser_recipe', methods=['POST'])
 def insert_recipe():
@@ -45,17 +46,37 @@ def insert_recipe():
     print (request.form.to_dict())
     return redirect(url_for('cookbook'))
 
+#-------------------------------------------------------------- Editing Recipe
 
-#@app.route('/edit_recipe/<recipe_id>')
-#def edit_task(recipe_id):
-#    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(task_id)})
-#    all_categories =  mongo.db.categories.find()
-#    return render_template('edit_recipe.html', recipe=the_recipe,
-#                           categories=all_categories)
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    all_categories =  mongo.db.categories.find()
+    all_cuisines = mongo.db.cuisines.find()
+    all_difficulties = mongo.db.difficulty.find()
+    all_allergens = allergens=mongo.db.allergens.find()
+    return render_template('editrecipe.html', recipe=the_recipe, categories=all_categories, cuisines=all_cuisines, difficulty=all_difficulties, allergens=all_allergens)
 
-#@app.route("/recipe/<recipe_name>")
-#def user(username):  
- #   return render_template("recipe.html")
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    recipes = mongo.db.tasks
+    recipes.update( {'_id': ObjectId(recipe_id)},
+    {
+        'recipe_name':request.form.get('recipe_name'),
+        'author':request.form.get('author'),
+        'author_country': request.form.get('author_country'),
+        'recipe_category': request.form.get('recipe_category'),
+        'number_of_portions':request.form.get('number_of_portions'),
+        'difficulty_level':request.form.get('difficulty_level'),
+        'recipe_description':request.form.get('recipe_description'),
+        'cuisine': request.form.get('cuisine'),
+        'recipe_allergens': request.form.get('recipe_allergens'),
+        'recipe_image':request.form.get('number_of_portions'),
+        'ingredients':request.form.get('ingredients'),
+        'method':request.form.get('method')
+    })
+    return redirect(url_for('cookbook'))
+#-------------------------------------------------------------- Managing Categories
     
 @app.route('/get_categories')
 def get_categories():
