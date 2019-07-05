@@ -28,34 +28,52 @@
 
 <!-- ---------------------------------------------------------Most Liked Recipes Section -->	
 
-<!-- -------------------------------------------------------------Categories Section -->
-{% for category in categories %}
+<!-- -------------------------------------------------------------Filter by Category Section -->
 
-{% if loop.index % 2 != 0 %}
 <div class="container-category bg-soft-yellow">
     <div class="row container-fluid">
-      <div class="col-6 text-center align-self-center">
-        <a href="{{url_for('get_recipes', category_id=category._id)}}" class="text-decoration-none"><strong>{{category.category_name}}</strong></a>
+      <div class="col-12 col-md-6 text-center align-self-center">
+        <h3>Categories</h3>
       </div>
-      <div class="col-6 d-none d-md-block category-image">
-        <img src="{{category.category_image}}" alt="{{category.category_name}}"></img>
+      
+      <div class="col-12 col-md-6 ">
+        
+        <!-- -List of Categories -->
+        <ul class="list-group list-group-flush">
+        {% for category in categories %}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-12 col-md-8">
+                <a href="{{url_for('get_recipes', criteria_id=category._id)}}" class="text-decoration-none">{{category.category_name}}</a>
+              </div>
+              <div class="col-12 col-md-4">
+               
+                <a class="btn btn-primary btn-sm" href="{{url_for('edit_category', category_id=category._id)}}" role="button">Edit</a>
+                <a class="btn btn-primary btn-sm" href="{{url_for('delete_category', category_id=category._id)}}" role="button">Delete</a>
+              
+              </div>
+            </div>
+              
+              
+            
+            
+          </li>
+        {% endfor %}
+        </ul>
+        <!-- -Add New Category Button -->
+        <div class="row container-fluid">
+          <div class="col-12 margin-top">
+            <p class="text-center">  <a class="btn btn-primary btn-sm" href="{{url_for('add_category')}}" role="button">Add Category!</a></p>
+          </div>
+        </div>
       </div>
   </div>
 </div>
-{% else %}
-<div class="container-category bg-white">
-    <div class="row container-fluid">
-      <div class="col-6 d-none d-md-block">
-        <img src="{{category.category_image}}" alt="{{category.category_name}}"></img>
-      </div>
-      <div class="col-6 text-center align-self-center">
-        <a href="{{url_for('get_recipes', category_id=category._id)}}" class="text-decoration-none"><strong>{{category.category_name}}</strong></a>
-      </div>
-  </div>
-</div>
-{% endif %}
-{% endfor %}
 
+<!-- -------------------------------------------------------------Filter by Cuisine Section -->
+
+
+<!-- -------------------------------------------------------------Filter by Difficulty Level Section -->
 {% for category in categories %}
       {{category.category_name}}
   {%endfor %}

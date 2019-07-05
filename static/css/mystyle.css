@@ -1,6 +1,19 @@
 body {
-    background-color: #ffc107;
+    background-color: #e3db56;
     
+}
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+.margin-top{
+    margin-top: 15px;
+}
+
+.list-group-item {
+    background-color: #ffffff00;
 }
 
 /*----------------------------------------------------------------- HOME*/
@@ -97,7 +110,7 @@ body {
 }
 
 /*--------------------------------------------------- Add Recipe*/
-.add-recipe-title-container{
+.add-title-container{
     background-image: url('../images/condiments.jpg');
     height: 50vh;
     background-size: cover;

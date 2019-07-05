@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- -------------------------------------------------------------Title  Section -->
+<div class="container-fluid add-title-container">
+
+    <div class="container-fluid">
+
+        <div class="row border border-dark title-cookbook">
+            <div class="col-12 text-center">
+                <h2><strong>Edit Category</strong></h2>
+            </div>
+        </div>
+
+        <div class="row title-cook-today">
+            <div class="col-12 text-center">
+                <h3>Any modification for this category? Do it here!</h3>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- -------------------------------------------------------------Form  Section -->
+
+<div class="row container-fluid container-add-recipe bg-soft-yellow">
+    
+    <form action="{{ url_for('update_category', category_id=category._id) }}" method="POST" class="col-12">
+        
+        <!-- -------------------------------Elements Filled by the the user -->
+        
+        <!-- ---------Category Name -->
+        <div class="form-group">
+            <label for="category_name" class="font-weight-bold">Category Name</label>
+            <input type="text" class="form-control" id="category_name" name="category_name" value="{{category.category_name}}">
+        </div>
+        
+        <!-- ----------------------------------Save Changes & cancel buttons -->
+        <div class="row">
+            <div class="col-12">
+                <p class="text-center">
+                    <button class="btn btn-primary" type="submit" >Save Changes</button>
+                    <button class="btn btn-primary"  ><a href="{{ url_for('cookbook')}}">Cancel</a></button>
+                </p>
+            </div>
+        </div>
+       
+    </form>
+
+</div>
+
+{% endblock %}

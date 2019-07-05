@@ -25,10 +25,10 @@
 <!-- -------------------------------------------------------------Form  Section -->
 
 <div class="row container-fluid container-add-recipe bg-soft-yellow">
-
+    
     <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col-12">
         
-        <!-- ----------------------------------Elements Filled by the the user -->
+        <!-- -------------------------------Elements Filled by the the user -->
         
         <!-- ---------Recipe Name -->
         <div class="form-group">
@@ -140,7 +140,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div><input type="text" name="ingredients['']" value="{{recipe.ingredients}}"></div>
+                                <div><input type="text" name="ingredients" value="{{recipe.ingredients}}"></div>
                             </div>
                         </div>
                     </div>
@@ -184,46 +184,49 @@
         <!-- ---------Recipe Likes -->
         <div class="form-group d-none">
             <label for="likes" class="font-weight-bold">Likes</label>
-            <input type="text" class="form-control" id="likes" name="likes"placeholder="Number of likes" value="0">
+            <input type="text" class="form-control" id="likes" name="likes" value="{{recipe.likes}}">
         </div>
         
         <!-- ---------Recipe Dislikes -->
         <div class="form-group d-none">
             <label for="dislikes" class="font-weight-bold">Dislikes</label>
-            <input type="text" class="form-control" id="dislikes" name="dislikes" placeholder="Number of dislikes" value="0">
+            <input type="text" class="form-control" id="dislikes" name="dislikes" value="{{recipe.dislikes}}">
         </div>
         
         <!-- ---------Recipe Liked By -->
         <div class="form-group d-none">
             <label for="liked_by" class="font-weight-bold">Users that Liked this Recipe</label>
-            <input type="text" class="form-control" id="liked_by" name="liked_by" placeholder="Liked by" value="null">
+            <input type="text" class="form-control" id="liked_by" name="liked_by" value="{{recipe.liked_by}}">
         </div>
         
         <!-- ---------Recipe Disliked by -->
         <div class="form-group d-none">
             <label for="disliked_by" class="font-weight-bold">Users that did not liked this recipe</label>
-            <input type="text" class="form-control" id="disliked_by" name="disliked_by" placeholder="Disliked by" value="null">
+            <input type="text" class="form-control" id="disliked_by" name="disliked_by" value="{{recipe.disliked_by}}">
         </div>
         
         <!-- ---------Recipe Views -->
         <div class="form-group d-none">
             <label for="views" class="font-weight-bold">Views</label>
-            <input type="text" class="form-control" id="views" name="views" placeholder="Number of views" value="0">
+            <input type="text" class="form-control" id="views" name="views" value="{{recipe.views}}">
         </div>
         
         <!-- ---------Recipe timestamp -->
         <div class="form-group d-none">
             <label for="timestamp" class="font-weight-bold">Timestamp</label>
-            <input type="text" class="form-control" id="timestamp" name="timestamp" placeholder="Author of recipe" value="0">
+            <input type="text" class="form-control" id="timestamp" name="timestamp" value="{{recipe.timestamp}}">
         </div>
         
+        <!-- ----------------------------------Save Changes & cancel buttons -->
         <div class="row">
             <div class="col-12">
                 <p class="text-center">
-                    <a class="btn btn-primary" href="{{url_for('the_recipe', recipe_id=recipe._id)}}" role="button">Save changes</a>
+                    <button class="btn btn-primary" type="submit" >Save Changes</button>
+                    <button class="btn btn-primary"  ><a href="{{ url_for('the_recipe', recipe_id=recipe._id) }}">Cancel</a></button>
                 </p>
             </div>
         </div>
+       
     </form>
 
 </div>

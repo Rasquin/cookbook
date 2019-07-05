@@ -15,15 +15,57 @@ mongo = PyMongo(app)
 def cookbook():
     return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find())
     
+    
+#-------------------------------------------------------------- Managment of Categories
+
+#---- Adding a new category
+@app.route('/add_category')
+def add_category():
+    return render_template('addcategory.html')
+
+#---- Inserting a new category
+@app.route('/inser_category', methods=['POST'])
+def insert_category():
+    categories = mongo.db.categories
+    categories.insert_one(request.form.to_dict())
+    print (request.form.to_dict())
+    return redirect(url_for('cookbook'))
+    
+#---- Editing a new category
+@app.route('/edit_category/<category_id>')
+def edit_category(category_id):
+    the_category =  mongo.db.categories.find_one({"_id": ObjectId(category_id)})
+    return render_template('editcategory.html', category=the_category)
+
+#---- Updating a  category
+@app.route('/update_category/<category_id>', methods=["POST"])
+def update_category(category_id):
+    categories = mongo.db.categories
+    categories.update( {'_id': ObjectId(category_id)},
+    {
+        'category_name':request.form.get('category_name'),
+        'number_of_recipes':request.form.get('number_of_recipes')
+    })
+    return redirect(url_for('cookbook'))
+    
+#---- Deleting a  category
+@app.route('/delete_category/<category_id>')
+def delete_category(category_id):
+    mongo.db.categories.remove({'_id': ObjectId(category_id)})
+    return redirect(url_for('cookbook'))
+    
+#-------------------------------------------------------------- Display of  Recipes
+@app.route('/get_recipes/<criteria>')
+def get_recipes(criteria):
+    the_criteria=  mongo.db.categories.find_one({"_id": ObjectId(criteria)})
+    all_recipes =  mongo.db.recipes.find()
+    return render_template("recipesbycategory.html", recipes=all_recipes,  criteria=the_criteria)
+
 @app.route('/all_recipes')
 def all_recipes():
     return render_template("allrecipes.html", recipes=mongo.db.recipes.find())
  
-@app.route('/get_recipes/<category_id>')
-def get_recipes(category_id):
-    the_category=  mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    all_recipes =  mongo.db.recipes.find()
-    return render_template("recipesbycategory.html", recipes=all_recipes,  category=the_category)
+
 
 @app.route('/the_recipe/<recipe_id>')
 def the_recipe(recipe_id):
@@ -59,7 +101,7 @@ def edit_recipe(recipe_id):
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
-    recipes = mongo.db.tasks
+    recipes = mongo.db.recipes
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
         'recipe_name':request.form.get('recipe_name'),
@@ -73,14 +115,26 @@ def update_recipe(recipe_id):
         'recipe_allergens': request.form.get('recipe_allergens'),
         'recipe_image':request.form.get('number_of_portions'),
         'ingredients':request.form.get('ingredients'),
-        'method':request.form.get('method')
+        'method':request.form.get('method'),
+        'likes': request.form.get('likes'),
+        'dislikes': request.form.get('dislikes'),
+        'liked_by':request.form.get('liked_by'),
+        'disliked_by':request.form.get('disliked_by'),
+        'views':request.form.get('views'),
+        'timestamp':request.form.get('timestamp')
     })
     return redirect(url_for('cookbook'))
+    
+#-------------------------------------------------------------- Delete Recipe
+
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('cookbook'))
+    
 #-------------------------------------------------------------- Managing Categories
     
-@app.route('/get_categories')
-def get_categories():
-    return render_template("categories.html", categories=mongo.db.categories.find())
+
 
     
 if __name__ == '__main__':

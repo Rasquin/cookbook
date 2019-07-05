@@ -63,9 +63,18 @@ find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
 Routes:
 /cookbook --> cookbook() -->render template to cookbook.html
 /all_recipes --> all_recipes() --> render template to allrecipes.html
-/get_recipes/<category_id> --> get_recipes(category_id) --> render template to recipesbycategory.html
 /add_recipe --> add_recipe() --> render template to addrecipe.html
-'/the_recipe/<recipe_id>  -->  the_recipe(recipe_id) --> render template to recipe.html
+/the_recipe/<recipe_id>  -->  the_recipe(recipe_id) --> render template to recipe.html
+/inser_recipe', methods=['POST'] --> insert_recipe() --> redirect to cookbook.html
+/edit_recipe/<recipe_id> --> edit_recipe(recipe_id) --> render template to editrecipe.html
+/update_recipe/<recipe_id>, methods=["POST"] -->update_recipe(recipe_id)--> redirect to  cookbook.html
+/delete_recipe/<recipe_id> --> delete_recipe(recipe_id) ---> redirect to cookbook.html
+
+/add_category -->add_category() --> render_template to addcattegory.html
+/inser_category, methods=['POST'] -->inser_category() ---> redirect  to cookbook.html
+/edit_category/<category_id> --> edit_category(category_id) --> render template to editcategory.html
+/update_category/<category_id>, methods=["POST"] --> update_category(category_id) -->redirect  to cookbook.html
+/delete_category/<category_id> --> delete_category(category_id) -->redirect  to cookbook.html
 
 ## Technologies Used
 
