@@ -9,13 +9,13 @@
 
         <div class="row border border-dark title-cookbook">
             <div class="col-12 text-center">
-                <h2><strong>Edit Category</strong></h2>
+                <h2><strong>Edit Cuisine</strong></h2>
             </div>
         </div>
 
         <div class="row title-cook-today">
             <div class="col-12 text-center">
-                <h3>Any modification for this category? Do it here!</h3>
+                <h3>Any modification for this cuisine type? Do it here!</h3>
             </div>
         </div>
 
@@ -26,22 +26,22 @@
 
 <div class="row container-fluid container-add-recipe bg-soft-yellow">
     
-    <form action="{{ url_for('update_category', category_id=category._id) }}" method="POST" class="col-12">
+    <form action="{{ url_for('update_cuisine', cuisine_id=cuisine._id) }}" method="POST" class="col-12">
         
-        <!-- -------------------------------Elements Filled by the the user -->
+        <!-- -------------------------Elements Filled by the the user -->
         
-        <!-- ---------Category Name -->
+        <!-- ---------Cuisine Name -->
         <div class="form-group">
-            <label for="category_name" class="font-weight-bold">Category Name</label>
-            <input type="text" class="form-control" id="category_name" name="category_name" value="{{category.category_name}}">
+            <label for="category_name" class="font-weight-bold">Cuisine Name</label>
+            <input type="text" class="form-control" id="cuisine_name" name="cuisine_name" value="{{cuisine.cuisine_name}}">
         </div>
         
-        <!-- ----------------------------------Elements NO filled by the the user -->
+        <!-- -------------------------Elements NO filled by the the user -->
        
-        <!-- ---------Category Number of Recipes -->
+        <!-- ---------Cuisine Number of Recipes -->
         <div class="form-group d-none">
             <label for="number_of_recipes" class="font-weight-bold">Numner of Recipes</label>
-            <input type="text" class="form-control" id="number_of_recipes" name="number_of_recipes" value="{{category.number_of_recipes}}">
+            <input type="text" class="form-control" id="number_of_recipes" name="number_of_recipes" value="{{cuisine.number_of_recipes}}">
         </div>
         
         <!-- ----------------------------------Save Changes & cancel buttons -->

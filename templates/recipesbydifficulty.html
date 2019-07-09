@@ -9,13 +9,13 @@
   		
   			<div class="row border border-dark title-cookbook">
   				<div class="col-12 text-center">
-  					<h2><strong>{{category.category_name}}</strong></h2>
+  					<h2><strong>{{difficulty.level}} Level</strong></h2>
   				</div>
   			</div>
   		
   			<div class="row title-cook-today">
   				<div class="col-12 text-center">
-  					<h3>Here you can check all the recipes for {{category.category_name}}</h3>
+  					<h3>Here you can check all the {{difficulty.level}} recipes</h3>
   				</div>
   			</div>
 		
@@ -25,7 +25,7 @@
 
 <!-- -------------------------------------------------Display of Recipes Section -->
 {% for recipe in recipes %}
-{% if recipe.recipe_category == category.category_name %}
+{% if recipe.difficulty_level == difficulty.level %}
 
 
 <!-- --Recipes in soft yellow container -->
@@ -115,4 +115,5 @@
     <p class="text-center">Would you like to add a new recipe?  <a class="btn btn-primary center" href="{{url_for('add_recipe')}}" role="button">Click Here!</a></p>
   </div>
 </div>
+
 {% endblock %}

@@ -61,7 +61,11 @@ find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
 ### Existing Features
 
 Routes:
+
+index
 /cookbook --> cookbook() -->render template to cookbook.html
+
+Recipes
 /all_recipes --> all_recipes() --> render template to allrecipes.html
 /add_recipe --> add_recipe() --> render template to addrecipe.html
 /the_recipe/<recipe_id>  -->  the_recipe(recipe_id) --> render template to recipe.html
@@ -70,11 +74,23 @@ Routes:
 /update_recipe/<recipe_id>, methods=["POST"] -->update_recipe(recipe_id)--> redirect to  cookbook.html
 /delete_recipe/<recipe_id> --> delete_recipe(recipe_id) ---> redirect to cookbook.html
 
+Categories
+/get_recipes_by_category/<category_id> --> get_recipes_by_category(category_id) --> render_template to recipesbycategory.html
 /add_category -->add_category() --> render_template to addcattegory.html
 /inser_category, methods=['POST'] -->inser_category() ---> redirect  to cookbook.html
 /edit_category/<category_id> --> edit_category(category_id) --> render template to editcategory.html
 /update_category/<category_id>, methods=["POST"] --> update_category(category_id) -->redirect  to cookbook.html
 /delete_category/<category_id> --> delete_category(category_id) -->redirect  to cookbook.html
+
+Cuisines
+/get_recipes_by_cuisine/<cuisine_id> --> get_recipes_by_cuisine(cuisine_id)--> render_template to recipesbycuisine.html
+/add_cuisine --> add_cuisine() --> render_template to addcuisine.html
+/inser_cuisine', methods=['POST'] --> insert_cuisine() --> redirect  to cookbook.html
+/edit_cuisine/<cuisine_id> --> edit_cuisine(cuisine_id) --> render_template to editcuisine.html
+/update_cuisine/<cuisine_id>', methods=["POST"] --> update_cuisine(cuisine_id) --> redirect  to cookbook.html
+/delete_cuisine/<cuisine_id> --> delete_cuisine(cuisine_id) --> redirect  to cookbook.html
+
+Difficulty Level
 
 ## Technologies Used
 

@@ -8,6 +8,13 @@ button a {
     color: white;
 }
 
+.bg-soft-yellow{
+    background-color: #e7e0c9d1;
+}
+.bg-white{
+    background-color: white;
+}
+
 .margin-top{
     margin-top: 15px;
 }
@@ -76,13 +83,7 @@ button a {
     height: 150px;
 }
 
-/*------------------------------------------------------------ All Recipe List*/
-.bg-soft-yellow{
-    background-color: #e7e0c9d1;
-}
-.bg-white{
-    background-color: white;
-}
+
 
 /*----------------------------------------------------------------- The recipe*/
 .recipe-title img {

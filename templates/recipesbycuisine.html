@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- -------------------------------------------------------------Title Section -->
+<div class="container-fluid home-container">
+
+    <div class="container-fluid">
+  		
+  			<div class="row border border-dark title-cookbook">
+  				<div class="col-12 text-center">
+  					<h2><strong>{{cuisine.cuisine_name}}</strong></h2>
+  				</div>
+  			</div>
+  		
+  			<div class="row title-cook-today">
+  				<div class="col-12 text-center">
+  					<h3>Here you can check all the recipes for {{cuisine.cuisine_name}}</h3>
+  				</div>
+  			</div>
+		
+	</div>
+		
+</div>
+
+<!-- -------------------------------------------------Display of Recipes Section -->
+{% for recipe in recipes %}
+{% if recipe.cuisine == cuisine.cuisine_name %}
+
+
+    <!-- --Recipes in soft yellow container -->
+    {% if loop.index % 2 != 0 %}
+    <div class="container-recipe bg-soft-yellow">
+        <div class="row container-fluid">
+            <div class="col-6">
+                <!-- Recipe Name-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
+                    </div>
+                </div>
+                <!-- Likes-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        Likes
+                    </div>  
+                </div>
+                <!-- Difficulty level-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        {{recipe.difficulty_level}}
+                    </div>
+                </div>
+                <!-- Edit and Delete buttons-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        <p class="text-center">
+                            <a class="btn btn-primary center" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit</a>
+                            <a class="btn btn-primary center" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" role="button">Delete</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
+            </div>
+        </div>
+    </div> 
+    
+    <!-- --Recipes in white  container -->
+    {% else %}
+    <div class="container-recipe bg-white">
+        <div class="row container-fluid">
+            <div class="col-6">
+                <!-- Recipe Name-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
+                    </div>
+                </div>
+                <!-- Likes-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        Likes
+                    </div>  
+                </div>
+                <!-- Difficulty level-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        {{recipe.difficulty_level}}
+                    </div>
+                </div>
+                <!-- Edit and Delete buttons-->
+                <div class="row container-fluid">
+                    <div class="col-12">
+                        <p class="text-center">
+                            <a class="btn btn-primary center" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit</a>
+                            <a class="btn btn-primary center" href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" role="button">Delete</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
+            </div>
+        </div>
+    </div>
+    {% endif %}
+{% endif %}
+{% endfor %}
+
+<!-- -------------------------------------------------------------Add New Recipe Button -->
+<div class="row container-fluid">
+  <div class="col-12">
+    <p class="text-center">Would you like to add a new recipe?  <a class="btn btn-primary center" href="{{url_for('add_recipe')}}" role="button">Click Here!</a></p>
+  </div>
+</div>
+
+{% endblock %}
