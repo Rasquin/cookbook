@@ -92,7 +92,7 @@
         <!-- ---------Recipe Allergens -->
         <div class="form-group">
             <label class="font-weight-bold">Possible allergens</label>
-            <select multiple class="selectpicker" id="recipe_allergens" name="recipe_allergens" data-width="100%">
+            <select multiple class="selectpicker" id="recipe_allergens" name="recipe_allergens[]" data-width="100%">
                 {% for allergen in allergens %}
                     <option value="{{allergen.allergen_name}}">{{allergen.allergen_name}}</option>
                 {% endfor %}

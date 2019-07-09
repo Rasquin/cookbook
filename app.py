@@ -15,6 +15,8 @@ mongo = PyMongo(app)
 @app.route('/cookbook')
 def cookbook():
     number_of_recipes_by_category()
+    number_of_recipes_by_cuisine()
+    number_of_recipes_by_difficulty()
     return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find().sort([("number_of_recipes", 1)]), cuisines=mongo.db.cuisines.find(), difficulties=mongo.db.difficulty.find())
 
     
@@ -29,7 +31,7 @@ def number_of_recipes_by_category():
     
     for index, category in enumerate(categories):
         count=0
-        print (index,category['category_name'])
+        
         recipes.rewind()
         for index, recipe in enumerate(recipes):
          
@@ -44,7 +46,6 @@ def number_of_recipes_by_category():
                    'category_name': category['category_name']
                    
                })
-        print (category['number_of_recipes'])    
     
     return categories
 
@@ -86,6 +87,32 @@ def delete_category(category_id):
 
 #-------------------------------------------------------------- Managment of Cuisines
 
+#---- Calculating the number of recipe by each cuisine
+@app.route('/number_of_recipes_by_cuisine')
+def number_of_recipes_by_cuisine():
+    recipes=mongo.db.recipes.find()
+    cuisines=mongo.db.cuisines.find()
+    
+    for index, cuisine in enumerate(cuisines):
+        count=0
+        
+        recipes.rewind()
+        for index, recipe in enumerate(recipes):
+         
+            if recipe['cuisine'] == cuisine['cuisine_name']:
+               count += 1
+               cuisine['number_of_recipes'] =count
+               
+               mongo.db.cuisines.update( {'_id': ObjectId(cuisine['_id'])},
+               {
+                   
+                   'number_of_recipes': count,
+                   'cuisine_name': cuisine['cuisine_name']
+                   
+               })
+    
+    return cuisines
+    
 #---- Adding a new cuisine
 @app.route('/add_cuisine')
 def add_cuisine():
@@ -120,6 +147,34 @@ def update_cuisine(cuisine_id):
 def delete_cuisine(cuisine_id):
     mongo.db.cuisines.remove({'_id': ObjectId(cuisine_id)})
     return redirect(url_for('cookbook'))
+    
+#---------------------------------------------------- Managment Difficulty Levels
+
+#---- Calculating the number of recipe by levels of difficulty
+@app.route('/number_of_recipes_by_difficulty')
+def number_of_recipes_by_difficulty():
+    recipes=mongo.db.recipes.find()
+    difficulties=mongo.db.difficulty.find()
+    
+    for index, difficulty in enumerate(difficulties):
+        count=0
+        
+        recipes.rewind()
+        for index, recipe in enumerate(recipes):
+         
+            if recipe['difficulty_level'] == difficulty['level']:
+               count += 1
+               difficulty['number_of_recipes'] =count
+               
+               mongo.db.difficulty.update( {'_id': ObjectId(difficulty['_id'])},
+               {
+                   
+                   'number_of_recipes': count,
+                   'level': difficulty['level']
+                   
+               })
+    
+    return difficulty
     
 #-------------------------------------------------------------- Display of  Recipes
 
