@@ -91,12 +91,22 @@
 
         <!-- ---------Recipe Allergens -->
         <div class="form-group">
-            <label class="font-weight-bold">Possible allergens</label>
-            <select multiple class="selectpicker" id="recipe_allergens" name="recipe_allergens[]" data-width="100%">
-                {% for allergen in allergens %}
-                    <option value="{{allergen.allergen_name}}">{{allergen.allergen_name}}</option>
-                {% endfor %}
-            </select>
+            <div class="row">
+                <div class="col-12">
+                    <label class="font-weight-bold">Possible allergens:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                     
+                    {% for allergen in allergens %}
+                    
+                    <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}"data-width="100%"/>
+                    
+                    <label for="{{allergen.allergen_name}}" class="font-weight-bold">{{allergen.allergen_name}}</label>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
 
         <!-- ---------Recipe Ingredients & Image area -->
@@ -150,45 +160,14 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div><textarea class="form-control" id="method" name="method" rows="2" placeholder="Tell us something interesting about your recipe"></textarea></div> 
+                        <div><textarea class="form-control" id="method" name="method[]" rows="2" placeholder="Tell us something interesting about your recipe"></textarea></div> 
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <!-- ----------------------------------Elements NO filled by the the user -->
-       
-        <!-- ---------Recipe Likes -->
-        <div class="form-group d-none">
-            <label for="likes" class="font-weight-bold">Likes</label>
-            <input type="text" class="form-control" id="likes" name="likes"placeholder="Number of likes" value="0">
-        </div>
-        
-        <!-- ---------Recipe Dislikes -->
-        <div class="form-group d-none">
-            <label for="dislikes" class="font-weight-bold">Dislikes</label>
-            <input type="text" class="form-control" id="dislikes" name="dislikes" placeholder="Number of dislikes" value="0">
-        </div>
-        
-        <!-- ---------Recipe Liked By -->
-        <div class="form-group d-none">
-            <label for="liked_by" class="font-weight-bold">Users that Liked this Recipe</label>
-            <input type="text" class="form-control" id="liked_by" name="liked_by" placeholder="Liked by" value="null">
-        </div>
-        
-        <!-- ---------Recipe Disliked by -->
-        <div class="form-group d-none">
-            <label for="disliked_by" class="font-weight-bold">Users that did not liked this recipe</label>
-            <input type="text" class="form-control" id="disliked_by" name="disliked_by" placeholder="Disliked by" value="null">
-        </div>
-        
-        <!-- ---------Recipe Views -->
-        <div class="form-group d-none">
-            <label for="views" class="font-weight-bold">Views</label>
-            <input type="text" class="form-control" id="views" name="views" placeholder="Number of views" value="0">
-        </div>
-       
+
         <!-- ---------Add Recipe & Cancel buttons -->
         <div class="row">
             <div class="col-12">

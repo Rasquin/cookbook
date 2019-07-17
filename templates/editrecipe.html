@@ -80,13 +80,13 @@
         <!-- ---------Recipe Description -->
         <div class="form-group">
             <label for="recipe_description" class="font-weight-bold">Description</label>
-            <textarea class="form-control" id="recipe_description" name="recipe_description"  rows="3" value="{{recipe.recipe_description}}"></textarea>
+            <textarea class="form-control" id="recipe_description" name="recipe_description"  rows="3">{{recipe.recipe_description}}</textarea>
         </div>
 
         <!-- ---------Recipe Potions -->
         <div class="form-group">
             <label for="number_of_portions" class="font-weight-bold">Portions</label>
-            <textarea class="form-control" id="number_of_portions" name="number_of_portions" rows="1" value="{{recipe.number_of_portions}}"></textarea>
+            <textarea class="form-control" id="number_of_portions" name="number_of_portions" rows="1" >{{recipe.number_of_portions}}</textarea>
         </div>
 
         <!-- ---------Recipe Difficulty Level -->
@@ -172,7 +172,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div><textarea class="form-control" id="method" name="method" rows="2" value="{{recipe.method}}"></textarea></div> 
+                        <div><textarea class="form-control" id="method" name="method" rows="2">{{recipe.method}}</textarea></div> 
                     </div>
                 </div>
             </div>
@@ -193,18 +193,7 @@
             <input type="text" class="form-control" id="dislikes" name="dislikes" value="{{recipe.dislikes}}">
         </div>
         
-        <!-- ---------Recipe Liked By -->
-        <div class="form-group d-none">
-            <label for="liked_by" class="font-weight-bold">Users that Liked this Recipe</label>
-            <input type="text" class="form-control" id="liked_by" name="liked_by" value="{{recipe.liked_by}}">
-        </div>
-        
-        <!-- ---------Recipe Disliked by -->
-        <div class="form-group d-none">
-            <label for="disliked_by" class="font-weight-bold">Users that did not liked this recipe</label>
-            <input type="text" class="form-control" id="disliked_by" name="disliked_by" value="{{recipe.disliked_by}}">
-        </div>
-        
+    
         <!-- ---------Recipe Views -->
         <div class="form-group d-none">
             <label for="views" class="font-weight-bold">Views</label>

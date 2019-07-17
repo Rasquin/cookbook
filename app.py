@@ -17,7 +17,7 @@ def cookbook():
     number_of_recipes_by_category()
     number_of_recipes_by_cuisine()
     number_of_recipes_by_difficulty()
-    return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find().sort([("number_of_recipes", 1)]), cuisines=mongo.db.cuisines.find(), difficulties=mongo.db.difficulty.find())
+    return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find().sort([("number_of_recipes", -1)]), cuisines=mongo.db.cuisines.find().sort([("number_of_recipes", -1)]), difficulties=mongo.db.difficulty.find().sort([("number_of_recipes", -1)]))
 
     
 
@@ -122,7 +122,8 @@ def add_cuisine():
 @app.route('/inser_cuisine', methods=['POST'])
 def insert_cuisine():
     cuisines = mongo.db.cuisines
-    cuisines.insert_one(request.form.to_dict())
+    print (request.form.getlist('recipe_allergens'))
+    #cuisines.insert_one(request.form.to_dict())
     return redirect(url_for('cookbook'))
     
 #---- Editing a new cuisine
@@ -209,11 +210,21 @@ def all_recipes():
 @app.route('/the_recipe/<recipe_id>')
 def the_recipe(recipe_id):
     the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    likes(recipe_id)
+    the_recipe_views = mongo.db.recipes.update_one({'_id': ObjectId(recipe_id)}, {'$inc': {'views': 1}})
     
-   # allergens= the_recipe.allergens
-    #ingredients= the_recipe.ingredients
-    #method= the_recipe.method
     return render_template("recipe.html", recipe=the_recipe)
+
+@app.route('/likes/<recipe_id>')
+def likes(recipe_id):
+    the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    like= 'false'
+    if like:
+        the_recipe['likes'] += 1
+    
+    
+    return likes
+
 
 #-------------------------------------------------------------- Adding New Recipe
 @app.route('/add_recipe')
@@ -224,9 +235,14 @@ def add_recipe():
 def insert_recipe():
     recipes = mongo.db.recipes
     recipe_dict = request.form.to_dict()
+    print (request.form.getlist('recipe_allergens'))
+    recipe_dict['recipe_allergens'] = request.form.getlist('recipe_allergens')
     recipe_dict['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    recipe_dict['views'] = 0
+    recipe_dict['likes'] = 0
+    recipe_dict['dislikes'] = 0
+   
     recipes.insert_one(recipe_dict)
-    print (request.form.to_dict())
     return redirect(url_for('cookbook'))
     
 
@@ -256,14 +272,12 @@ def update_recipe(recipe_id):
         'recipe_description':request.form.get('recipe_description'),
         'cuisine': request.form.get('cuisine'),
         'recipe_allergens': request.form.get('recipe_allergens'),
-        'recipe_image':request.form.get('number_of_portions'),
+        'recipe_image':request.form.get('recipe_image'),
         'ingredients':request.form.get('ingredients'),
         'method':request.form.get('method'),
-        'likes': request.form.get('likes'),
-        'dislikes': request.form.get('dislikes'),
-        'liked_by':request.form.get('liked_by'),
-        'disliked_by':request.form.get('disliked_by'),
-        'views':request.form.get('views'),
+        'likes': int(request.form.get('likes')),
+        'dislikes': int(request.form.get('dislikes')),
+        'views': int(request.form.get('views')),
     })
     return redirect(url_for('cookbook'))
     
@@ -274,7 +288,12 @@ def delete_recipe(recipe_id):
     mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
     return redirect(url_for('cookbook'))
     
-#-------------------------------------------------------------- 
+
+
+
+
+#-------------------------------------------------------------- Recipe Likes/dislikes
+
     
 
 

@@ -94,7 +94,7 @@ Difficulty Level
 
 ## Technologies Used
 
-This project was made with HTML5, CSS3 and JavaScript. Besides those, the following tools were used:
+This project was made with HTML5, CSS3, JavaScript and python. Besides those, the following tools were used:
 
 Language: English.
 
@@ -103,6 +103,9 @@ https://www.mongodb.com/
 
 Heroku
 https://www.heroku.com/
+
+Jinja 2.10
+http://jinja.pocoo.org/docs/2.10/
 
 Libraries: 
 Bootstrap v4.3.1 scripts (JavaScript, jQuery and Popper.js) to get functionality 
@@ -130,6 +133,12 @@ The code was continuously monitored through the "Inspect" function of the Google
 Chrome Browser. Making sure that the website was completely responsive. The 
 project looks as expected in different browsers (GoogleChrome InternetExplorer).
 
+Testing for the app.py:
+1 each time a new collection was introduced, its content was corroborate through the
+print function of python. Same was done while creating the diferents for's that belong 
+to the routes. Example: for index, category in enumerate(categories): 
+print (index,category['category_name'])
+
 1 navbar:the navbar in both pages allows you to nav to the exact place you want
 in the website between them.
 2 Both maps open in the right location.
@@ -147,36 +156,23 @@ is supposed to.
 error appears.
 
 Problems unsolved:
-. When clicking on the respective icon in the map, the idea was that user will 
-get not only the name of the place, but also the address, opening hours and a 
-picture. I only could get the name place in the infowindow of the map. I get
-all the info needed, but coldn't show it in the infowindow.
-. In the map section of attractions.html, when nothing is selected, the map 
-display several places without asking for it.
-
+.
 
 Problems solved:
-. Sometimes the map didn't upload when the website was opened from github. Was 
-solved cleaning the caches. js?key=AIzaSyD_huMnglI9aQ9AUlk7BcwiH2oSVckYmb0&callback=initMap:54 Google Maps JavaScript API error: RefererNotAllowedMapError
-https://developers.google.com/maps/documentation/javascript/error-messages#referer-not-allowed-map-error
-Your site URL to be authorized: https://rasquin.github.io/project-2-CCS/index.html#about
-. When opening from GitHub, the map of attractions.html didn't upload. The
-console said 'not allowed referrer', but the site was already added as referrer
-in the key restrictions. Solved through copying the whole website address as
-http referrer.
-. Alert about having two times the scripts for Google MAp Place API. One of the 
-scripts was content into the other, Solved erasing the extra script.
-. Could not get the Google Map Place ApI to read the place of insterest  directly 
-from the select buttom. Solved changing the function initMap.
-. At firts, the idea of the interactive map was that the user had  2 options to 
-find what they were looking for: a) select buttom that results in the display of 
-a set of places, and option b) SearchBox where the user could look for a specific place.
-At the end, I had to decide for only 1 method of search, because both methods where incompatible.
-I chose the select method beacause it keeps the map centered in Caracas and
-allowes me easier access to the place object given by Google Map API. Whereas the 
-SearchBox would change the center of the map if you looked for a place outside of Caracas.
-Then I had to  change a little the logic of my own scripts and the
-presentation of the info in the HTML until I got a satisfactory result. 
+. TypeError: 'NoneType' object is not iterable. Solved through making sure the 
+the attribute has no null value, so the object is iterable.
+. AttributeError: 'dict' object has no attribute 'views' Solved by changing the
+method to access the dict attribute. Example: Intead of dict.attribute use 
+dict['attribute']
+. AttributeError: 'str' object has no attribute 'int'. Solved by converting the 
+string to integer through the  python int() function
+. TypeError: must be str, not int. Solved through checking the type of att of the
+dict and converting to int what was needed.
+. When editing the <textarea> didn't show the content. I was using wrong the 
+sintaxis. Solved through changing <textarea value="the value"></textarea> to
+<textarea>the value </textarea>
+
+
 . favicon.ico:1 GET https://rasquin.github.io/favicon.ico 404  Solved by creating 
 an icon and uploading it into the site.
 
@@ -225,30 +221,13 @@ The imagen for Good_Food_Display can be found in https://upload.wikimedia.org/wi
 ### External links
 
 Casa Natal & Museo Bolivar https://en.wikipedia.org/wiki/Birthplace_of_Sim%C3%B3n_Bol%C3%ADvar
-Plaza Bolívar de Caracas https://en.wikipedia.org/wiki/Bolivar_Plaza_(Caracas)
-Paseo Los Próceres https://es.wikipedia.org/wiki/Paseo_Los_Pr%C3%B3ceres
-Caracas Botanical Garden https://en.wikipedia.org/wiki/Caracas_Botanical_Garden
-Museo de Arte Contemporáneo https://es.wikipedia.org/wiki/Museo_de_Arte_Contempor%C3%A1neo_de_Caracas
-National Art Gallery https://en.wikipedia.org/wiki/National_Art_Gallery_(Caracas)
-Los Caobos Park https://en.wikipedia.org/wiki/Los_Caobos_Park
-Plaza Francia https://en.wikipedia.org/wiki/Plaza_Francia_(Caracas)
-El Ávila National Park https://en.wikipedia.org/wiki/El_%C3%81vila_National_Park
-National Pantheon of Venezuela https://en.wikipedia.org/wiki/National_Pantheon_of_Venezuela
-Parque del este https://en.wikipedia.org/wiki/Parque_del_Este
-Caracas Cathedral https://en.wikipedia.org/wiki/Caracas_Cathedral
-El Hatillo Town https://en.wikipedia.org/wiki/El_Hatillo_Municipality
 
-Pabellon https://en.wikipedia.org/wiki/Pabell%C3%B3n_criollo
-arepas https://en.wikipedia.org/wiki/Arepa
-cachapas https://en.wikipedia.org/wiki/Cachapa
 
 ## Acknowledgements
 The brief for this project was given by Code Institute. I received inspiration 
-for this project from CARACAS, the city I was born and capital of my country of 
-origen, I grew up in this beautiful city and know most of its secrets. Because
-the political-economics and social situation I had to go out of the country to 
-look for a better life. Hoping that someday everything will go back to normal 
-and my city will be open to receive a big amount of tourism.
+for this project from my siter Aurora, who is studying to become a cook. I always 
+wished that we had our own cookbook full of our crazy recipes that we invent 
+during the weekends when we share on family.
 
 
 

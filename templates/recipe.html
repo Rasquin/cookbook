@@ -6,7 +6,7 @@
 	
 	<div class="recipe-title">
   			
-	<img class="image-recipe-title" src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
+	<img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
 		
 	</div>
 
@@ -96,8 +96,9 @@
       <a class="btn btn-primary center" href="{{url_for('cookbook')}}" role="button">Delete</a>
       </p>
     </div>
-    
   </div>
+  
+  
   <div class="row">
     <div class="col-12"></div>
   </div>
@@ -105,12 +106,11 @@
   
   
   <div class="d-none">
-    {{recipe.timestamp}}
+    
     {{recipe.tips}}
     {{recipe.likes}}
     {{recipe.dislikes}}
-    {{recipe.liked_by}}
-    {{recipe.disliked_by}}
+   
   </div>    
     
 </div>
@@ -119,20 +119,3 @@
 {% endblock %}
   
   <!-- ----------------------------------------------------- SCRIPTS
- {{recipe.recipe_name}}
-    {{recipe.author}}
-    {{recipe.author_country}}
-    {{recipe.difficulty_level}}
-    {{recipe.allergens}}
-    {{recipe.timestamp}}
-    {{recipe.image_urll}}
-    {{recipe.ingredients}}
-    {{recipe.method}}
-    {{recipe.tips}}
-    {{recipe.likes}}
-    {{recipe.dislikes}}
-    {{recipe.liked_by}}
-    {{recipe.disliked_by}}
-    {{recipe.views}}
-    
-    -->
