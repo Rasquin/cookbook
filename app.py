@@ -210,7 +210,7 @@ def all_recipes():
 @app.route('/the_recipe/<recipe_id>')
 def the_recipe(recipe_id):
     the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    likes(recipe_id)
+   # likes(recipe_id)
     the_recipe_views = mongo.db.recipes.update_one({'_id': ObjectId(recipe_id)}, {'$inc': {'views': 1}})
     
     return render_template("recipe.html", recipe=the_recipe)
@@ -237,7 +237,9 @@ def insert_recipe():
     recipe_dict = request.form.to_dict()
     print (request.form.getlist('recipe_allergens'))
     recipe_dict['recipe_allergens'] = request.form.getlist('recipe_allergens')
-    recipe_dict['timestamp'] = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    recipe_dict['ingredients'] = request.form.getlist('ingredients')
+    recipe_dict['method'] = request.form.getlist('method')
+    recipe_dict['timestamp'] = datetime.now()
     recipe_dict['views'] = 0
     recipe_dict['likes'] = 0
     recipe_dict['dislikes'] = 0
@@ -256,11 +258,14 @@ def edit_recipe(recipe_id):
     all_cuisines = mongo.db.cuisines.find()
     all_difficulties = mongo.db.difficulty.find()
     all_allergens = allergens=mongo.db.allergens.find()
+    #print (all_allergens['allergen_name'])
     return render_template('editrecipe.html', recipe=the_recipe, categories=all_categories, cuisines=all_cuisines, difficulty=all_difficulties, allergens=all_allergens)
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes
+    the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+ 
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
         'recipe_name':request.form.get('recipe_name'),
@@ -271,13 +276,15 @@ def update_recipe(recipe_id):
         'difficulty_level':request.form.get('difficulty_level'),
         'recipe_description':request.form.get('recipe_description'),
         'cuisine': request.form.get('cuisine'),
-        'recipe_allergens': request.form.get('recipe_allergens'),
+        'recipe_allergens': request.form.getlist('recipe_allergens'),
         'recipe_image':request.form.get('recipe_image'),
-        'ingredients':request.form.get('ingredients'),
-        'method':request.form.get('method'),
-        'likes': int(request.form.get('likes')),
-        'dislikes': int(request.form.get('dislikes')),
-        'views': int(request.form.get('views')),
+        'ingredients':request.form.getlist('ingredients'),
+        'method':request.form.getlist('method'),
+        'likes': the_recipe['likes'],
+        'dislikes': the_recipe['dislikes'],
+        'timestamp': the_recipe['timestamp'],
+        'views': the_recipe['views']
+        
     })
     return redirect(url_for('cookbook'))
     

@@ -121,7 +121,7 @@
                e.preventDefault();
                if (number_of_ingredient < max_ingredients) { //max input box allowed
                    number_of_ingredient++; //text box increment
-                   $(wrapper_ingredient).append('<div><input type="text" name="ingredients[]"/><a href="#" class="remove_ingredient">Remove</a></div>'); //add input box
+                   $(wrapper_ingredient).append('<div><input type="text" name="ingredients"/><a href="#" class="remove_ingredient">Remove</a></div>'); //add input box
                }
            });
    
@@ -141,7 +141,7 @@
                m.preventDefault();
                if (number_of_method < max_method) { //max input box allowed
                    number_of_method++; //text box increment
-                   $(wrapper_method).append('<textarea class="form-control" id="method[]" rows="2" placeholder="Steeps"></textarea><a href="#" class="remove_method">Remove</a>'); //add input box
+                   $(wrapper_method).append('<textarea class="form-control"  name="method" rows="2" placeholder="Steep"></textarea><a href="#" class="remove_method">Remove</a>'); //add input box
                }
            });
    

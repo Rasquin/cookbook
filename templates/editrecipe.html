@@ -108,19 +108,27 @@
 
         <!-- ---------Recipe Allergens -->
         <div class="form-group">
-            <label class="font-weight-bold">Possible allergens</label>
-            <select multiple class="selectpicker" id="recipe_allergens" name="recipe_allergens" data-width="100%">
-                {% for allergen in allergens %}
-                    {% if allergen.allergen_name == recipe.recipe_allergens %}
-                        <option value="{{allergen.allergen_name}}" selected >{{allergen.allergen_name}}</option>
-                    {% else %}
-                        <option value="{{allergen.allergen_name}}">{{allergen.allergen_name}}</option>
-                    {% endif %}
-                {% endfor %}
-                
-                
-            </select>
+            <div class="row">
+                <div class="col-12">
+                    <label class="font-weight-bold">Possible allergens:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                     
+                    {% for allergen in allergens %}
+                        {% if allergen['allergen_name'] == recipe['recipe_allergens'] %}
+                            <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}" checked data-width="100%"/>
+                            <label for="{{allergen.allergen_name}}" class="font-weight-bold">{{allergen.allergen_name}}</label>
+                        {% else %}
+                            <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}" data-width="100%"/>
+                            <label for="{{allergen.allergen_name}}" class="font-weight-bold">{{allergen.allergen_name}}</label>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
         </div>
+        
 
         <!-- ---------Recipe Ingredients & Image area -->
         <div class="row">
@@ -139,9 +147,13 @@
                             </div>
                         </div>
                         <div class="row">
+                            {% for ingredient in recipe.ingredients %}
                             <div class="col-12">
-                                <div><input type="text" name="ingredients" value="{{recipe.ingredients}}"></div>
-                            </div>
+                                
+                                <div><input type="text" name="ingredients" value="{{ ingredient }}"/><a href="#" class="remove_ingredient">Remove</a></div>
+                             </div>  
+                            {% endfor %}
+                            
                         </div>
                     </div>
             
@@ -171,14 +183,18 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12">
-                        <div><textarea class="form-control" id="method" name="method" rows="2">{{recipe.method}}</textarea></div> 
-                    </div>
+                    {% for step in recipe.method %}
+                        <div class="col-12">
+                         
+                            <div><textarea class="form-control" id="method" name="" rows="2">{{step}}</textarea> <a href="#" class="remove_method">Remove</a></div>
+                        </div>  
+                    {% endfor %}
                 </div>
+                
             </div>
 
         </div>
-
+    
         <!-- ----------------------------------Elements NO filled by the the user -->
        
         <!-- ---------Recipe Likes -->
