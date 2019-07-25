@@ -24,9 +24,32 @@
 	</div>
 	
 	
-<!-- -------------------------------------------------------------New Recipes Section -->
+<!-- -------------------------------------------------------------Featured Recipes Section -->
+<div class="container-category bg-white">
+  <!-- -----------New Recipes Section -->
+  <div class="row container-fluid">
+    <div class="col-12 col-md-6 text-center align-self-center">
+      <div class="row">
+        <div class="col-12"><h3>Newest Recipes !!!</h3></div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ol class="list-group list-group-flush"> 
+            {% for recipe in newest_recipes %}
+            <li class="list-group-item">
+              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}} - {{recipe.timestamp}}</strong></a>
+            </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
+        
+    </div>
+  </div>
+  <!-- -----------Most Liked Recipes Section -->	
+  
+</div>
 
-<!-- ---------------------------------------------------------Most Liked Recipes Section -->	
 
 <!-- -------------------------------------------------------------Filter by Category Section -->
 
@@ -53,10 +76,6 @@
               
               </div>
             </div>
-              
-              
-            
-            
           </li>
         {% endfor %}
         </ul>

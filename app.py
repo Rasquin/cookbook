@@ -14,10 +14,11 @@ mongo = PyMongo(app)
 
 @app.route('/cookbook')
 def cookbook():
+   
     number_of_recipes_by_category()
     number_of_recipes_by_cuisine()
     number_of_recipes_by_difficulty()
-    return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find().sort([("number_of_recipes", -1)]), cuisines=mongo.db.cuisines.find().sort([("number_of_recipes", -1)]), difficulties=mongo.db.difficulty.find().sort([("number_of_recipes", -1)]))
+    return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find().sort([("number_of_recipes", -1)]), cuisines=mongo.db.cuisines.find().sort([("number_of_recipes", -1)]), difficulties=mongo.db.difficulty.find().sort([("number_of_recipes", -1)]), newest_recipes= mongo.db.recipes.find().sort([('_id',-1)]).limit(3))
 
     
 
@@ -206,7 +207,7 @@ def all_recipes():
     return render_template("allrecipes.html", recipes=mongo.db.recipes.find())
  
 
-
+#---- The recipe
 @app.route('/the_recipe/<recipe_id>')
 def the_recipe(recipe_id):
     the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -214,16 +215,19 @@ def the_recipe(recipe_id):
     the_recipe_views = mongo.db.recipes.update_one({'_id': ObjectId(recipe_id)}, {'$inc': {'views': 1}})
     
     return render_template("recipe.html", recipe=the_recipe)
-
-@app.route('/likes/<recipe_id>')
-def likes(recipe_id):
+    
+#---- Counting the likes of the recipe
+@app.route('/likes_counter/<recipe_id>')
+def likes_counter(recipe_id):
     the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     like= 'false'
     if like:
         the_recipe['likes'] += 1
+    return
     
-    
-    return likes
+
+#---- Looking for the 3 most liked recipes
+
 
 
 #-------------------------------------------------------------- Adding New Recipe
@@ -239,7 +243,7 @@ def insert_recipe():
     recipe_dict['recipe_allergens'] = request.form.getlist('recipe_allergens')
     recipe_dict['ingredients'] = request.form.getlist('ingredients')
     recipe_dict['method'] = request.form.getlist('method')
-    recipe_dict['timestamp'] = datetime.now()
+    recipe_dict['timestamp'] = datetime.now().strftime("%d %b %Y ")
     recipe_dict['views'] = 0
     recipe_dict['likes'] = 0
     recipe_dict['dislikes'] = 0

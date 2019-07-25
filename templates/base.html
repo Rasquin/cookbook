@@ -7,14 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Monica's CookBook</title>
 
-    <!--jQuery before materialize.css for good css loading-->
+    <!--jQuery
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    -->
 
     <!-- -------------------------------------------------------STYLES-->
     <!--Bootstrap 4.3.1 CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--Bootstrap-Select v1.13.9 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+    <!--fonts  from google apis -->
+    <link href="https://fonts.googleapis.com/css?family=Charm&display=swap" rel="stylesheet">
     <!--Own CSS-->
     <link rel="stylesheet" href="/static/css/mystyle.css" type="text/css" />
 
@@ -42,7 +45,7 @@
                       Recipes
                     </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">New Recipes</a>
+                            <a class="dropdown-item" href="#newest_recipes">New Recipes</a>
                             <a class="dropdown-item" href="#">Most Liked Recipes</a>
                             <a class="dropdown-item" href="{{url_for('all_recipes')}}">All Recipes</a>
                             <a class="dropdown-item" href="{{url_for('add_recipe')}}">Add Recipe</a>
@@ -50,20 +53,14 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Categories
+                      Search Recipe by 
                     </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="{{url_for('cookbook')}}">Search Recipe by Category</a>
-                            <a class="dropdown-item" href="#">Manage Categories</a>
+                            <a class="dropdown-item" href="#recipes_by_category">Category</a>
+                            <a class="dropdown-item" href="#recipes_by_cuisine">Cuisine</a>
+                            <a class="dropdown-item" href="#recipes_by_difficulty_level">Difficulty Level</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Registrer</a>
-                    </li>
-
                 </ul>
             </div>
 
@@ -108,6 +105,12 @@
     <!-----------------------------------------------------------------jQuery-->
    <script type="text/javascript">
        $(document).ready(function() {
+           
+           //Likes change icom color
+          $('.change-color').click(function() {
+              $(this).toggleClass('bright-red');
+              $(this).toggleClass('dark-red');
+});
            
            //Ingredients Add
            var max_ingredients = 20; //maximum input boxes allowed

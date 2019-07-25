@@ -1,11 +1,16 @@
 body {
     background-color: #e3db56;
-    
+    font-family: 'Charm', cursive;
 }
 
-button a {
+a {
+    color: #5a2d0c;
     text-decoration: none;
-    color: white;
+}
+.btn-primary {
+    color: #f8f9fa;
+    background-color: #c99a12;
+    border-color: #ffc107;
 }
 
 .bg-soft-yellow{
@@ -21,6 +26,13 @@ button a {
 
 .list-group-item {
     background-color: #ffffff00;
+}
+
+.dark-red{
+    color: #a72c38;
+}
+.bright-red {
+    color: #ff142b;
 }
 
 /*----------------------------------------------------------------- HOME*/
