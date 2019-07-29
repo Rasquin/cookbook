@@ -25,10 +25,11 @@
 	
 	
 <!-- -------------------------------------------------------------Featured Recipes Section -->
-<div class="container-category bg-white">
-  <!-- -----------New Recipes Section -->
+<div class="container-section-home bg-white">
+  
   <div class="row container-fluid">
-    <div class="col-12 col-md-6 text-center align-self-center">
+    <!-- -----------New Recipes Section -->
+    <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe">
       <div class="row">
         <div class="col-12"><h3>Newest Recipes !!!</h3></div>
       </div>
@@ -43,17 +44,31 @@
           </ol>
         </div>
       </div>
-        
+    </div>
+    <!-- -----------Most Viewed Recipes Section -->
+    <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe">
+      <div class="row">
+        <div class="col-12"><h3>Most viewed Recipes !!!</h3></div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <ol class="list-group list-group-flush"> 
+            {% for recipe in most_viewed_recipes %}
+            <li class="list-group-item">
+              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}} - {{recipe.views}}</strong></a>
+            </li>
+            {% endfor %}
+          </ol>
+        </div>
+      </div>
     </div>
   </div>
-  <!-- -----------Most Liked Recipes Section -->	
-  
 </div>
 
 
 <!-- -------------------------------------------------------------Filter by Category Section -->
 
-<div class="container-category bg-soft-yellow">
+<div class="container-section-home bg-soft-yellow" id="recipes_by_category">
     <div class="row container-fluid">
       <div class="col-12 col-md-6 text-center align-self-center">
         <h3>Categories</h3>
@@ -91,7 +106,7 @@
 
 <!-- -------------------------------------------------------------Filter by Cuisine Section -->
 
-<div class="container-category bg-white">
+<div class="container-section-home bg-white" id="recipes_by_cuisine">
     <div class="row container-fluid">
       
       <div class="col-12 col-md-6 ">
@@ -111,13 +126,10 @@
               
               </div>
             </div>
-              
-              
-            
-            
           </li>
         {% endfor %}
         </ul>
+        
         <!-- -Add New Cuisine Button -->
         <div class="row container-fluid">
           <div class="col-12 margin-top">
@@ -133,7 +145,7 @@
 </div>
 
 <!-- -------------------------------------------------------------Filter by Difficulty Level Section -->
-<div class="container-category bg-soft-yellow">
+<div class="container-section-home bg-soft-yellow" id="recipes_by_difficulty_level">
     <div class="row container-fluid">
       <div class="col-12 col-md-6 text-center align-self-center">
         <h3>Difficulty Level</h3>

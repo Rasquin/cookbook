@@ -18,7 +18,7 @@ def cookbook():
     number_of_recipes_by_category()
     number_of_recipes_by_cuisine()
     number_of_recipes_by_difficulty()
-    return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find().sort([("number_of_recipes", -1)]), cuisines=mongo.db.cuisines.find().sort([("number_of_recipes", -1)]), difficulties=mongo.db.difficulty.find().sort([("number_of_recipes", -1)]), newest_recipes= mongo.db.recipes.find().sort([('_id',-1)]).limit(3))
+    return render_template("cookbook.html", recipes=mongo.db.recipes.find(),  categories=mongo.db.categories.find().sort([("number_of_recipes", -1)]), cuisines=mongo.db.cuisines.find().sort([("number_of_recipes", -1)]), difficulties=mongo.db.difficulty.find().sort([("number_of_recipes", -1)]), newest_recipes= mongo.db.recipes.find().sort([('_id',-1)]).limit(3), most_viewed_recipes= mongo.db.recipes.find().sort([('views',-1)]).limit(3) )
 
     
 
@@ -184,8 +184,9 @@ def number_of_recipes_by_difficulty():
 @app.route('/get_recipes_by_category/<category_id>')
 def get_recipes_by_category(category_id):
     the_category=  mongo.db.categories.find_one({"_id": ObjectId(category_id)})
-    all_recipes =  mongo.db.recipes.find()
+    all_recipes =  mongo.db.recipes.find().sort([("views", -1)])
     return render_template("recipesbycategory.html", recipes=all_recipes,  category=the_category)
+    
 
 #---- Recipes by cuisine
 @app.route('/get_recipes_by_cuisine/<cuisine_id>')
