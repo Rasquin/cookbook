@@ -1,5 +1,5 @@
 body {
-    background-color: #e3db56;
+    background-color: #856404;
     font-family: 'Charm', cursive;
 }
 
@@ -145,3 +145,8 @@ a {
 
 /*----------------------------------- MEDIA QUERIES*/
 
+@media (min-width: 992px) {
+   .order-first {
+       order: 1;
+   }
+}

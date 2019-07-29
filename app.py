@@ -192,20 +192,20 @@ def get_recipes_by_category(category_id):
 @app.route('/get_recipes_by_cuisine/<cuisine_id>')
 def get_recipes_by_cuisine(cuisine_id):
     the_cuisine=  mongo.db.cuisines.find_one({"_id": ObjectId(cuisine_id)})
-    all_recipes =  mongo.db.recipes.find()
+    all_recipes =  mongo.db.recipes.find().sort([("views", -1)])
     return render_template("recipesbycuisine.html", recipes=all_recipes,  cuisine=the_cuisine)
     
 #---- Recipes by difficulty level 
 @app.route('/get_recipes_by_difficulty/<difficulty_id>')
 def get_recipes_by_difficulty(difficulty_id):
     the_difficulty=  mongo.db.difficulty.find_one({"_id": ObjectId(difficulty_id)})
-    all_recipes =  mongo.db.recipes.find()
+    all_recipes =  mongo.db.recipes.find().sort([("views", -1)])
     return render_template("recipesbydifficulty.html", recipes=all_recipes,  difficulty=the_difficulty)
 
 #---- All recipes  
 @app.route('/all_recipes')
 def all_recipes():
-    return render_template("allrecipes.html", recipes=mongo.db.recipes.find())
+    return render_template("allrecipes.html", recipes=mongo.db.recipes.find().sort([("views", -1)]))
  
 
 #---- The recipe
@@ -217,19 +217,6 @@ def the_recipe(recipe_id):
     
     return render_template("recipe.html", recipe=the_recipe)
     
-#---- Counting the likes of the recipe
-@app.route('/likes_counter/<recipe_id>')
-def likes_counter(recipe_id):
-    the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    like= 'false'
-    if like:
-        the_recipe['likes'] += 1
-    return
-    
-
-#---- Looking for the 3 most liked recipes
-
-
 
 #-------------------------------------------------------------- Adding New Recipe
 @app.route('/add_recipe')
@@ -246,11 +233,10 @@ def insert_recipe():
     recipe_dict['method'] = request.form.getlist('method')
     recipe_dict['timestamp'] = datetime.now().strftime("%d %b %Y ")
     recipe_dict['views'] = 0
-    recipe_dict['likes'] = 0
-    recipe_dict['dislikes'] = 0
    
     recipes.insert_one(recipe_dict)
-    return redirect(url_for('cookbook'))
+    
+    return redirect('/#newest_recipes')
     
 
 
@@ -285,13 +271,11 @@ def update_recipe(recipe_id):
         'recipe_image':request.form.get('recipe_image'),
         'ingredients':request.form.getlist('ingredients'),
         'method':request.form.getlist('method'),
-        'likes': the_recipe['likes'],
-        'dislikes': the_recipe['dislikes'],
         'timestamp': the_recipe['timestamp'],
         'views': the_recipe['views']
         
     })
-    return redirect(url_for('cookbook'))
+    return redirect('/the_recipe/'+recipe_id)
     
 #-------------------------------------------------------------- Delete Recipe
 
@@ -302,14 +286,7 @@ def delete_recipe(recipe_id):
     
 
 
-
-
-#-------------------------------------------------------------- Recipe Likes/dislikes
-
-    
-
-
-    
+#-------------------------------------------------------------- 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

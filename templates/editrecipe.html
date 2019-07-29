@@ -117,7 +117,7 @@
                 <div class="col-12">
                      
                     {% for allergen in allergens %}
-                        {% if allergen['allergen_name'] == recipe['recipe_allergens'] %}
+                        {% if allergen['allergen_name'] in recipe['recipe_allergens'] %}
                             <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}" checked data-width="100%"/>
                             <label for="{{allergen.allergen_name}}" class="font-weight-bold">{{allergen.allergen_name}}</label>
                         {% else %}

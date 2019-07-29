@@ -1,13 +1,58 @@
 # MONICA'S COOKBOOK - project III
 
 Data Centric Development Milestone Project. This consist of a data-driven web application.
-The  backend code and frontend form allow users to access, add, edit, store and delete cooking recipes
- 
-One or two paragraphs providing an overview of your project.
+The  backend code and frontend form allow users to access, add, edit, store and delete 
+cooking recipes, types of categories and cuisines.
 
-Essentially, this part is your sales pitch.
+
 
 ## UX
+This website has been designed to offer the users a nice experience at looking for
+new recipes to try.The visitors of this website will be able to look for recipes
+based on category, cuisine or difficulty level. Once selected the desired recipe,
+the user will redirected to a new page where he/she will be able to see a picture 
+of the recipe followed  by the recipe name, views, author, the author's country, 
+the category, cuisine, description, portions, level of difficulty, possible allargens,
+ingredients and method. 
+
+- As a user, I would like a website that display the featured recipes, such as newest 
+recipes or most viewed recipes. Then the home page of the site should display those
+recipes in a place easy to locate.
+ 
+- As a user, I may be interested in a specified category of recipe, I may find 
+interesting how many recipes has each of the categories. Then the site should have
+a section where it shows the different categories available and their respective
+number of available recipes .
+
+- As a user, I may be interested in a specified cuisine recipe, I may find 
+interesting how many recipes has each of the types of cuisine. Then the site should have
+a section where it shows the different cuisines available and their respective
+number of available recipes.
+
+- As a user, I may think that there are not enough categories/ cuisines to clasify 
+the recipes, or that a name is misspelled or the category/cuisine is wrong. Then the site 
+should allow the user add, edit the name or delete such category/cuisine.
+
+- As a user, I could be interested in follow a recipe that would fit my skill as a cook.
+Then the site should also display the recipes by level of difficulty.
+
+- As user I would show more interest in taking a look on the most popular recipes when
+a list of recipes is displayed. Then the website should display the recipes in 
+order following a criteria such as number of views.
+
+-As a user I would like to know as much as possible about the recipe I am interested in.
+
+-As a user, I would like to check their facebook, twitter or instagram. The
+website should allow me to visit also those sites.
+
+
+
+The wireframes of this project were made with microsoft powerpoint 2010. You can
+find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
+
+## Features
+
+The 
 database schema based on recipes, and any other related properties and entities 
 (e.g. views, upvotes, ingredients, recipe authors, allergens, author’s country of
 origin, cuisine etc…).
@@ -25,38 +70,8 @@ Create a detailed view for each recipes, that would just show all attributes for
 that recipe, and the full preparation instructions
 Allow for editing and deleting of the recipe records, either on separate pages,
 or built into the list/detail pages
-Optionally, you may choose to add basic user registration and authentication to 
-the site. This can as simple as adding a username field to the recipe creation 
-form, without a password (for this project only, this is not expected to be secure)
 
 
-This website has been designed to offer the users, possible new tourists in the
-city, a nice experience when choosing where to go, what to eat or where to stay. 
-The visitors of this website will be able to learn about the city of Caracas, 
-principal tourism spots and the variety of flavor found in the city, 
-
--As a user, I would like a website I would like to know where is Caracas located,
-its weather and get an idea about what to expect of this city; then it should be
-a section that gives the user general information about the destination city. 
--As a user, I would like to know about the different tourist attractions that can
-be found is this destination; then there should be a section giving information 
-about it and some recommendations of places to visit. 
--As a user, I would be curious about the local food and types of restaurants in 
-the area, besides I would like to know if I could go out at nihgt and where to 
-go; then it should be a section where I can get this information and some advice
-about local dishes.
--As a user, I would like to know about the lodging structure of the city, then 
-it should be a section that speaks about it.
--As a user, I could get doubts or questions about the city or after visiting the
-city as user, I would like to tell my experience; then it should be a section 
-where the user can comunicate with the administrator of the website.
--As a user, I would like to check their facebook, twitter or instagram. The
-website should allow me to visit also those sites.
-
-The wireframes of this project were made with microsoft powerpoint 2010. You can
-find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
-
-## Features
 
 ### Existing Features
 
@@ -115,16 +130,17 @@ https://getbootstrap.com/docs/4.3/getting-started/introduction/
 Bootstrap-Select v1.13.9 scripts and css to have a more interective and styled 
 select bottom https://developer.snapappointments.com/bootstrap-select/
 
-Google Icon Font
+Fontawesome Version 5.9.0  https://fontawesome.com/
 
-ro
 
 Google Fonts, from here it is got the font type of the whole website 
-(ZCOOL XiaoWei) https://fonts.google.com/?selection.family=ZCOOL+XiaoWei
+('Charm', cursive) 
+https://fonts.google.com/specimen/Charm
 
 Own CSS style sheet. To make my own styles and overwrite some of the Bootstrap 
 style library.
-Own JavaScript files. To make the maps work with my own criteria.
+Own JavaScript file. To make the functionality of the add/remove ingredients and 
+steeps in the method, also to change the color of the heart icom for the 'likes' .
 
 ## Testing
 The whole code (html & CSS) was validated through the Markup Validation Service
@@ -168,6 +184,9 @@ dict['attribute']
 string to integer through the  python int() function
 . TypeError: must be str, not int. Solved through checking the type of att of the
 dict and converting to int what was needed.
+.TypeError: if no direction is specified, key_or_list must be an instance of list. 
+Solved through changing the format of the sorting from sort({"attribute": 1})
+to sort([("attribute", 1)])
 . When editing the <textarea> didn't show the content. I was using wrong the 
 sintaxis. Solved through changing <textarea value="the value"></textarea> to
 <textarea>the value </textarea>

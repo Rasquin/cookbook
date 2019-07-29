@@ -46,7 +46,7 @@
                     </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="#newest_recipes">New Recipes</a>
-                            <a class="dropdown-item" href="#">Most Liked Recipes</a>
+                            <a class="dropdown-item" href="#most_viewed_recipes">Most viewed Recipes</a>
                             <a class="dropdown-item" href="{{url_for('all_recipes')}}">All Recipes</a>
                             <a class="dropdown-item" href="{{url_for('add_recipe')}}">Add Recipe</a>
                         </div>
@@ -56,9 +56,9 @@
                       Search Recipe by 
                     </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#recipes_by_category">Category</a>
-                            <a class="dropdown-item" href="#recipes_by_cuisine">Cuisine</a>
-                            <a class="dropdown-item" href="#recipes_by_difficulty_level">Difficulty Level</a>
+                            <a class="dropdown-item" href="/#recipes_by_category">Category</a>
+                            <a class="dropdown-item" href="/#recipes_by_cuisine">Cuisine</a>
+                            <a class="dropdown-item" href="/#recipes_by_difficulty_level">Difficulty Level</a>
                         </div>
                     </li>
                 </ul>
@@ -70,7 +70,7 @@
 
     {% block content %} {% endblock %}
 
-    <footer class="container-fluid">
+    <footer class="container-fluid container-section-home">
 
 
         <!----------------------------------------------------------------------------SOCIAL MEDIA-->
@@ -105,12 +105,6 @@
     <!-----------------------------------------------------------------jQuery-->
    <script type="text/javascript">
        $(document).ready(function() {
-           
-           //Likes change icom color
-          $('.change-color').click(function() {
-              $(this).toggleClass('bright-red');
-              $(this).toggleClass('dark-red');
-});
            
            //Ingredients Add
            var max_ingredients = 20; //maximum input boxes allowed

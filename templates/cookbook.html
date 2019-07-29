@@ -29,7 +29,7 @@
   
   <div class="row container-fluid">
     <!-- -----------New Recipes Section -->
-    <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe">
+    <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe" id="newest_recipes">
       <div class="row">
         <div class="col-12"><h3>Newest Recipes !!!</h3></div>
       </div>
@@ -44,9 +44,12 @@
           </ol>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12"><i class="far fa-clock"></i></div>
+      </div>
     </div>
     <!-- -----------Most Viewed Recipes Section -->
-    <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe">
+    <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe" id="most_viewed_recipes">
       <div class="row">
         <div class="col-12"><h3>Most viewed Recipes !!!</h3></div>
       </div>
@@ -61,6 +64,9 @@
           </ol>
         </div>
       </div>
+      <div class="row">
+        <div class="col-12"><i class="far fa-eye"></i></div>
+      </div>
     </div>
   </div>
 </div>
@@ -70,13 +76,15 @@
 
 <div class="container-section-home bg-soft-yellow" id="recipes_by_category">
     <div class="row container-fluid">
+      
+      <!-- -Title for Categories -->
       <div class="col-12 col-md-6 text-center align-self-center">
         <h3>Categories</h3>
       </div>
       
+      <!-- -List of Categories -->
       <div class="col-12 col-md-6 ">
-        
-        <!-- -List of Categories -->
+        <!-- -List -->
         <ul class="list-group list-group-flush">
         {% for category in categories %}
           <li class="list-group-item">
@@ -100,7 +108,16 @@
             <p class="text-center">  <a class="btn btn-primary btn-sm" href="{{url_for('add_category')}}" role="button">Add Category!</a></p>
           </div>
         </div>
+        <!----Go to Top Menu---->
+        <div class="row container-fluid">
+          <div class="col-12 text-center">
+            <a href="{{url_for('cookbook')}}">
+              <p class="text-muted td-lg-none">Go to Top</p>
+            </a>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
 
@@ -109,9 +126,9 @@
 <div class="container-section-home bg-white" id="recipes_by_cuisine">
     <div class="row container-fluid">
       
+      <!-- -List of Cuisines -->
       <div class="col-12 col-md-6 ">
-        
-        <!-- -List of Cuisines -->
+        <!-- -List -->
         <ul class="list-group list-group-flush">
         {% for cuisine in cuisines %}
           <li class="list-group-item">
@@ -129,16 +146,24 @@
           </li>
         {% endfor %}
         </ul>
-        
         <!-- -Add New Cuisine Button -->
         <div class="row container-fluid">
           <div class="col-12 margin-top">
-            <p class="text-center">  <a class="btn btn-primary btn-sm" href="{{url_for('add_cuisine')}}" role="button">Add Cuisine!</a></p>
+            <p class="text-center"> <a class="btn btn-primary btn-sm" href="{{url_for('add_cuisine')}}" role="button">Add Cuisine!</a></p>
+          </div>
+        </div>
+        <!----Go to Top Menu---->
+        <div class="row container-fluid">
+          <div class="col-12 text-center">
+            <a href="{{url_for('cookbook')}}">
+              <p class="text-muted td-lg-none">Go to Top</p>
+            </a>
           </div>
         </div>
       </div>
       
-      <div class="col-12 col-md-6 text-center align-self-center">
+      <!-- -Title for Cuisines -->
+      <div class="col-12 col-md-6 order-first text-center align-self-center">
         <h3>Cuisines</h3>
       </div>
   </div>
@@ -146,27 +171,36 @@
 
 <!-- -------------------------------------------------------------Filter by Difficulty Level Section -->
 <div class="container-section-home bg-soft-yellow" id="recipes_by_difficulty_level">
-    <div class="row container-fluid">
-      <div class="col-12 col-md-6 text-center align-self-center">
-        <h3>Difficulty Level</h3>
-      </div>
-      
-      <div class="col-12 col-md-6 ">
-        
-        <!-- -List of Difficulty Levels -->
-        <ul class="list-group list-group-flush">
+  <div class="row container-fluid">
+    <!-- -List of Difficulty Title -->
+    <div class="col-12 col-md-6 text-center align-self-center">
+      <h3>Difficulty Level</h3>
+    </div>
+
+    <!-- -List of Difficulty Levels -->
+    <div class="col-12 col-md-6 ">
+      <ul class="list-group list-group-flush">
         {% for difficulty in difficulties %}
-          <li class="list-group-item">
-            <div class="row">
-              <div class="col-12">
-                <a href="{{url_for('get_recipes_by_difficulty', difficulty_id=difficulty._id)}}" class="text-decoration-none"><strong>{{difficulty.level}} </strong> - {{difficulty.number_of_recipes}}</a>
-              </div>
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-12">
+              <a href="{{url_for('get_recipes_by_difficulty', difficulty_id=difficulty._id)}}" class="text-decoration-none"><strong>{{difficulty.level}} </strong> - {{difficulty.number_of_recipes}}</a>
             </div>
-          </li>
+          </div>
+        </li>
         {% endfor %}
-        </ul>
-        
+      </ul>
+    </div>
+    
+    <!----Go to Top Menu---->
+    <div class="row container-fluid">
+      <div class="col-12 text-center">
+        <a href="{{url_for('cookbook')}}">
+          <p class="text-muted td-lg-none">Go to Top</p>
+        </a>
       </div>
+    </div>
+    
   </div>
 </div>
 

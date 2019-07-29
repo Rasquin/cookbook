@@ -16,7 +16,7 @@
   <!-- ---------Recipe Name, views & likes -->
   <div class="row  container-fluid border-top border-bottom">
     <div class="col-12">
-      <h3>{{recipe.recipe_name}} - <spam class="font-italic">(Views {{recipe.views}}) - <a  href="{{url_for('likes_counter', recipe_id=recipe._id)}}" ><i class="fa fa-heart  dark-red change-color" aria-hidden="true" href=></i></a> {{recipe.likes}} </spam></h3>
+      <h3>{{recipe.recipe_name}} - <spam class="font-italic">{{recipe.views}}  <i class="far fa-eye"></i></spam></h3>
     </div>
   </div>
   
