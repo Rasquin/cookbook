@@ -33,19 +33,19 @@
         <!-- ---------Recipe Name -->
         <div class="form-group">
             <label for="recipe_name" class="font-weight-bold">Recipe Name</label>
-            <input type="text" class="form-control" id="recipe_name" name="recipe_name" value="{{recipe.recipe_name}}">
+            <input type="text" class="form-control" id="recipe_name" name="recipe_name" required value="{{recipe.recipe_name}}">
         </div>
         
          <!-- ---------Recipe Author -->
         <div class="form-group">
             <label for="recipe_name" class="font-weight-bold">Author</label>
-            <input type="text" class="form-control" id="author" name="author" value="{{recipe.author}}">
+            <input type="text" class="form-control" id="author" name="author" required value="{{recipe.author}}">
         </div>
         
         <!-- ---------Recipe Author Country of Origin -->
         <div class="form-group">
             <label for="author_country" class="font-weight-bold">Author Country of Origin</label>
-            <input type="text" class="form-control" id="author_country" name="author_country" value="{{recipe.author_country}}">
+            <input type="text" class="form-control" id="author_country" name="author_country" required value="{{recipe.author_country}}">
         </div>
         
 
@@ -80,13 +80,13 @@
         <!-- ---------Recipe Description -->
         <div class="form-group">
             <label for="recipe_description" class="font-weight-bold">Description</label>
-            <textarea class="form-control" id="recipe_description" name="recipe_description"  rows="3">{{recipe.recipe_description}}</textarea>
+            <textarea class="form-control" id="recipe_description" name="recipe_description" required rows="3">{{recipe.recipe_description}}</textarea>
         </div>
 
-        <!-- ---------Recipe Potions -->
+        <!-- ---------Recipe Portions -->
         <div class="form-group">
             <label for="number_of_portions" class="font-weight-bold">Portions</label>
-            <textarea class="form-control" id="number_of_portions" name="number_of_portions" rows="1" >{{recipe.number_of_portions}}</textarea>
+            <textarea class="form-control" id="number_of_portions" name="number_of_portions" required rows="1" >{{recipe.number_of_portions}}</textarea>
         </div>
 
         <!-- ---------Recipe Difficulty Level -->
@@ -164,7 +164,7 @@
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label for="recipe_image" class="font-weight-bold">Image</label>
-                    <input type="text" class="form-control" id="recipe_image" name="recipe_image" value="{{recipe.recipe_image}}">
+                    <input type="text" class="form-control" id="recipe_image" name="recipe_image" required value="{{recipe.recipe_image}}">
                 </div>
             </div>
         </div>
@@ -186,7 +186,7 @@
                     {% for step in recipe.method %}
                         <div class="col-12">
                          
-                            <div><textarea class="form-control" id="method" name="" rows="2">{{step}}</textarea> <a href="#" class="remove_method">Remove</a></div>
+                            <div><textarea class="form-control" id="method" name="method" required rows="2">{{step}}</textarea> <a href="#" class="remove_method">Remove</a></div>
                         </div>  
                     {% endfor %}
                 </div>

@@ -32,26 +32,26 @@
         <!-- ---------Recipe Name -->
         <div class="form-group">
             <label for="recipe_name" class="font-weight-bold">Recipe Name</label>
-            <input type="text" class="form-control" id="recipe_name" name="recipe_name" placeholder="Write here the name of your recipe">
+            <input type="text" class="form-control" id="recipe_name" name="recipe_name" required placeholder="Write here the name of your recipe">
         </div>
         
          <!-- ---------Recipe Author -->
         <div class="form-group">
             <label for="recipe_name" class="font-weight-bold">Author</label>
-            <input type="text" class="form-control" id="author" name="author" placeholder="Author of recipe">
+            <input type="text" class="form-control" id="author" name="author" required placeholder="Author of recipe">
         </div>
         
         <!-- ---------Recipe Author Country of Origin -->
         <div class="form-group">
             <label for="author_country" class="font-weight-bold">Author Country of Origin</label>
-            <input type="text" class="form-control" id="author_country" name="author_country" placeholder="Author of recipe">
+            <input type="text" class="form-control" id="author_country" name="author_country"  required placeholder="Author of recipe">
         </div>
         
 
         <!-- ---------Recipe Category -->
         <div class="form-group">
             <label for="recipe_category" class="font-weight-bold">Category</label>
-            <select class="selectpicker" id="recipe_category" name="recipe_category" data-width="100%">
+            <select class="selectpicker" id="recipe_category" name="recipe_category"  data-width="100%">
                 {% for category in categories %}
                 <option value="{{category.category_name}}">{{category.category_name}}</option>
                 {% endfor %}
@@ -71,13 +71,13 @@
         <!-- ---------Recipe Description -->
         <div class="form-group">
             <label for="recipe_description" class="font-weight-bold">Description</label>
-            <textarea class="form-control" id="recipe_description" name="recipe_description"  rows="3" placeholder="Tell us something interesting about your recipe"></textarea>
+            <textarea class="form-control" id="recipe_description" name="recipe_description"  rows="3" required placeholder="Tell us something interesting about your recipe"></textarea>
         </div>
 
         <!-- ---------Recipe Portions -->
         <div class="form-group">
             <label for="number_of_portions" class="font-weight-bold">Portions</label>
-            <textarea class="form-control" id="number_of_portions" name="number_of_portions" rows="1" placeholder="How many people is your recipe for? How much food will be done here?"></textarea>
+            <textarea class="form-control" id="number_of_portions" name="number_of_portions" rows="1" required placeholder="How many people is your recipe for? How much food will be done here?"></textarea>
         </div>
 
         <!-- ---------Recipe Difficulty Level -->
@@ -128,7 +128,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12">
-                                <div><input type="text" name="ingredients"></div>
+                                <div><input type="text" name="ingredients" required></div>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
             <div class="col-12 col-md-6">
                 <div class="form-group">
                     <label for="recipe_image" class="font-weight-bold">Image</label>
-                    <input type="text" class="form-control" id="recipe_image" name="recipe_image" placeholder="Paste the URL of your recipe image">
+                    <input type="text" class="form-control" id="recipe_image" name="recipe_image" required placeholder="Paste the URL of your recipe image">
                 </div>
                 
             </div>
@@ -161,7 +161,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <div><textarea class="form-control" id="method" name="method" rows="2" placeholder="Tell us something interesting about your recipe"></textarea></div> 
+                        <div><textarea class="form-control" id="method" name="method" rows="2" required placeholder="Add a steep to prepare your recipe"></textarea></div> 
                     </div>
                 </div>
             </div>

@@ -63,7 +63,6 @@ def add_category():
 def insert_category():
     categories = mongo.db.categories
     categories.insert_one(request.form.to_dict())
-    print (request.form.to_dict())
     return redirect(url_for('cookbook'))
     
 #---- Editing a new category

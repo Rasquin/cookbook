@@ -145,6 +145,14 @@ a {
     height: 50vh;
     }
 }
+/* --Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+
+    .recipe-title img {
+    height: 80vh;
+    }
+}
+
 
 /* ---Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
