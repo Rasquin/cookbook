@@ -28,13 +28,6 @@ a {
     background-color: #ffffff00;
 }
 
-.dark-red{
-    color: #a72c38;
-}
-.bright-red {
-    color: #ff142b;
-}
-
 /*----------------------------------------------------------------- HOME*/
 .home-container {
     background-image: url('../images/Good_Food_Display.jpg');
@@ -91,8 +84,8 @@ a {
 }
 
 .container-recipe {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .container-recipe img {
     width: 200px;
@@ -103,7 +96,7 @@ a {
 
 /*----------------------------------------------------------------- The recipe*/
 .recipe-title img {
-    height: 25vh;
+    height: 33vh;
     width: 100%;
     background-size: cover;
     display: flex;
@@ -145,6 +138,15 @@ a {
 
 /*----------------------------------- MEDIA QUERIES*/
 
+
+/* -- Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) { 
+    .recipe-title img {
+    height: 50vh;
+    }
+}
+
+/* ---Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {
    .order-first {
        order: 1;

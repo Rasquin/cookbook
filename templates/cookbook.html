@@ -28,6 +28,7 @@
 <div class="container-section-home bg-white">
   
   <div class="row container-fluid">
+    
     <!-- -----------New Recipes Section -->
     <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe" id="newest_recipes">
       <div class="row">
@@ -38,7 +39,7 @@
           <ol class="list-group list-group-flush"> 
             {% for recipe in newest_recipes %}
             <li class="list-group-item">
-              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}} - {{recipe.timestamp}}</strong></a>
+              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}" target="_blank"><strong>{{recipe.recipe_name}} - {{recipe.timestamp}}</strong></a>
             </li>
             {% endfor %}
           </ol>
@@ -48,6 +49,7 @@
         <div class="col-12"><i class="far fa-clock"></i></div>
       </div>
     </div>
+    
     <!-- -----------Most Viewed Recipes Section -->
     <div class="col-12 col-md-6 text-center align-self-center container-featured-recipe" id="most_viewed_recipes">
       <div class="row">
@@ -58,7 +60,7 @@
           <ol class="list-group list-group-flush"> 
             {% for recipe in most_viewed_recipes %}
             <li class="list-group-item">
-              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}} - {{recipe.views}}</strong></a>
+              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}" target="_blank"><strong>{{recipe.recipe_name}} - {{recipe.views}} views</strong></a>
             </li>
             {% endfor %}
           </ol>
@@ -87,19 +89,21 @@
         <!-- -List -->
         <ul class="list-group list-group-flush">
         {% for category in categories %}
+        {% if category.number_of_recipes != '0' %}
           <li class="list-group-item">
             <div class="row">
               <div class="col-12 col-md-8">
-                <a href="{{url_for('get_recipes_by_category', category_id=category._id)}}" class="text-decoration-none"><strong>{{category.category_name}} </strong> - {{category.number_of_recipes}}</a>
+                <a href="{{url_for('get_recipes_by_category', category_id=category._id)}}" target="_blank" class="text-decoration-none"><strong>{{category.category_name}} </strong> - {{category.number_of_recipes}}</a>
               </div>
               <div class="col-12 col-md-4">
                
-                <a  href="{{url_for('edit_category', category_id=category._id)}}" >Edit</a>
+                <a  href="{{url_for('edit_category', category_id=category._id)}}" >Edit /</a>
                 <a  href="{{url_for('delete_category', category_id=category._id)}}">Delete</a>
               
               </div>
             </div>
           </li>
+        {% endif %}
         {% endfor %}
         </ul>
         <!-- -Add New Category Button -->
@@ -108,15 +112,16 @@
             <p class="text-center">  <a class="btn btn-primary btn-sm" href="{{url_for('add_category')}}" role="button">Add Category!</a></p>
           </div>
         </div>
-        <!----Go to Top Menu---->
-        <div class="row container-fluid">
+      </div>
+      
+      <!----Go to Top Menu---->
+      <div class="row container-fluid">
           <div class="col-12 text-center">
             <a href="{{url_for('cookbook')}}">
               <p class="text-muted td-lg-none">Go to Top</p>
             </a>
           </div>
         </div>
-      </div>
     </div>
   </div>
 </div>
@@ -131,19 +136,21 @@
         <!-- -List -->
         <ul class="list-group list-group-flush">
         {% for cuisine in cuisines %}
+        {% if cuisine.number_of_recipes != '0' %}
           <li class="list-group-item">
             <div class="row">
               <div class="col-12 col-md-8">
-                <a href="{{url_for('get_recipes_by_cuisine', cuisine_id=cuisine._id)}}" class="text-decoration-none"><strong>{{cuisine.cuisine_name}} </strong> - {{cuisine.number_of_recipes}}</a>
+                <a href="{{url_for('get_recipes_by_cuisine', cuisine_id=cuisine._id)}}" target="_blank" class="text-decoration-none"><strong>{{cuisine.cuisine_name}} </strong> - {{cuisine.number_of_recipes}}</a>
               </div>
               <div class="col-12 col-md-4">
                
-                <a  href="{{url_for('edit_cuisine', cuisine_id=cuisine._id)}}" >Edit</a>
+                <a  href="{{url_for('edit_cuisine', cuisine_id=cuisine._id)}}" >Edit /</a>
                 <a  href="{{url_for('delete_cuisine', cuisine_id=cuisine._id)}}">Delete</a>
               
               </div>
             </div>
           </li>
+        {% endif %}
         {% endfor %}
         </ul>
         <!-- -Add New Cuisine Button -->
@@ -152,21 +159,22 @@
             <p class="text-center"> <a class="btn btn-primary btn-sm" href="{{url_for('add_cuisine')}}" role="button">Add Cuisine!</a></p>
           </div>
         </div>
-        <!----Go to Top Menu---->
-        <div class="row container-fluid">
-          <div class="col-12 text-center">
-            <a href="{{url_for('cookbook')}}">
-              <p class="text-muted td-lg-none">Go to Top</p>
-            </a>
-          </div>
-        </div>
       </div>
       
       <!-- -Title for Cuisines -->
       <div class="col-12 col-md-6 order-first text-center align-self-center">
         <h3>Cuisines</h3>
       </div>
-  </div>
+      
+    </div>
+    <!----Go to Top Menu---->
+    <div class="row container-fluid">
+        <div class="col-12 text-center">
+          <a href="{{url_for('cookbook')}}">
+            <p class="text-muted td-lg-none">Go to Top</p>
+          </a>
+        </div>
+      </div>
 </div>
 
 <!-- -------------------------------------------------------------Filter by Difficulty Level Section -->
@@ -184,7 +192,7 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-12">
-              <a href="{{url_for('get_recipes_by_difficulty', difficulty_id=difficulty._id)}}" class="text-decoration-none"><strong>{{difficulty.level}} </strong> - {{difficulty.number_of_recipes}}</a>
+              <a href="{{url_for('get_recipes_by_difficulty', difficulty_id=difficulty._id)}}" target="_blank" class="text-decoration-none"><strong>{{difficulty.level}} </strong> - {{difficulty.number_of_recipes}}</a>
             </div>
           </div>
         </li>

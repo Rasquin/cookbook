@@ -31,18 +31,19 @@
 <!-- --Recipes in soft yellow container -->
 {% if loop.index % 2 != 0 %}
 <div class="container-recipe bg-soft-yellow">
-    <div class="row container-fluid">
-        <div class="col-6">
+    <div class="row container-fluid text-center">
+        
+        <div class="col-12 col-sm-6">
             <!-- Recipe Name-->
             <div class="row container-fluid">
                 <div class="col-12">
-                    <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
+                    <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}" target="_blank"><strong>{{recipe.recipe_name}}</strong></a>
                 </div>
             </div>
             <!-- Views-->
                 <div class="row container-fluid">
                     <div class="col-12">
-                        <p>{{recipe.views}} - Views  <i class="far fa-eye"></i></</p>
+                        {{recipe.views}} - Views  <i class="far fa-eye"></i>
                     </div>  
                 </div>
             <!-- Difficulty level-->
@@ -52,7 +53,7 @@
                 </div>
             </div>
             <!-- Edit and Delete buttons-->
-            <div class="row container-fluid">
+            <div class="row container-fluid d-none d-sm-block">
                 <div class="col-12">
                     <p class="text-center">
                         <a class="btn btn-primary center" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit</a>
@@ -61,27 +62,36 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <!-- Image of the recipe-->
+        <div class="col-12 col-sm-6">
             <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
         </div>
+        
+        <!-- Edit and Delete buttons for xs screens-->
+        <div class="col-12 d-block d-sm-none">
+               
+                <a  href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" >Edit /</a>
+                <a  href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">Delete</a>
+              
+              </div>
     </div>
 </div> 
 
 <!-- --Recipes in white  container -->
 {% else %}
 <div class="container-recipe bg-white">
-    <div class="row container-fluid">
-        <div class="col-6">
+     <div class="row container-fluid text-center">
+        <div class="col-12 col-sm-6">
             <!-- Recipe Name-->
             <div class="row container-fluid">
                 <div class="col-12">
-                    <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}}</strong></a>
+                    <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}" target="_blank"><strong>{{recipe.recipe_name}}</strong></a>
                 </div>
             </div>
             <!-- Views-->
                 <div class="row container-fluid">
                     <div class="col-12">
-                        <p>{{recipe.views}} - Views  <i class="far fa-eye"></i></</p>
+                        {{recipe.views}} - Views  <i class="far fa-eye"></i>
                     </div>  
                 </div>
             <!-- Difficulty level-->
@@ -91,7 +101,7 @@
                 </div>
             </div>
             <!-- Edit and Delete buttons-->
-            <div class="row container-fluid">
+            <div class="row container-fluid d-none d-sm-block">
                 <div class="col-12">
                     <p class="text-center">
                         <a class="btn btn-primary center" href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" role="button">Edit</a>
@@ -100,9 +110,18 @@
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <!-- Image of the recipe-->
+        <div class="col-12 col-sm-6">
             <img src="{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}">
         </div>
+        
+        <!-- Edit and Delete buttons for xs screens-->
+        <div class="col-12 d-block d-sm-none">
+               
+                <a  href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" >Edit /</a>
+                <a  href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">Delete</a>
+              
+              </div>
     </div>
 </div>
 {% endif %}
@@ -110,9 +129,9 @@
 {% endfor %}
 
 <!-- -------------------------------------------------------------Add New Recipe Button -->
-<div class="row container-fluid">
+<div class="bg-soft-yellow">
   <div class="col-12">
-    <p class="text-center">Would you like to add a new recipe?  <a class="btn btn-primary center" href="{{url_for('add_recipe')}}" role="button">Click Here!</a></p>
+    <p class="text-center">Would you like to add a new recipe?  <a class="btn btn-primary" href="{{url_for('add_recipe')}}" target="_blank" role="button">Click Here!</a></p>
   </div>
 </div>
 

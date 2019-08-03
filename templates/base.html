@@ -41,14 +41,14 @@
                         <a class="nav-link" href="{{url_for('cookbook')}}">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownRecipeLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Recipes
                     </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownRecipeLink">
                             <a class="dropdown-item" href="#newest_recipes">New Recipes</a>
                             <a class="dropdown-item" href="#most_viewed_recipes">Most viewed Recipes</a>
-                            <a class="dropdown-item" href="{{url_for('all_recipes')}}">All Recipes</a>
-                            <a class="dropdown-item" href="{{url_for('add_recipe')}}">Add Recipe</a>
+                            <a class="dropdown-item" href="{{url_for('all_recipes')}}" target="_blank">All Recipes</a>
+                            <a class="dropdown-item" href="{{url_for('add_recipe')}}" target="_blank">Add Recipe</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -78,9 +78,9 @@
             <div class="col-12 text-center">
                 <h5 class="text-uppercase">Follow Us</h5>
                 <ul class="list-inline social-links">
-                    <li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-pinterest-square"  aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-twitter-square" aria-hidden="true"></i></a></li>
-                    <li class="list-inline-item"><a target="_blank" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-pinterest-square"  aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-twitter-square" aria-hidden="true"></i></a></li>
+                    <li class="list-inline-item"><a href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
                 </ul>
             </div>
         </div>

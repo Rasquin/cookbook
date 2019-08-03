@@ -10,6 +10,9 @@ app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
 
+
+#-------------------------------------------------------------- HOME
+
 @app.route('/')
 
 @app.route('/cookbook')
@@ -123,8 +126,7 @@ def add_cuisine():
 @app.route('/inser_cuisine', methods=['POST'])
 def insert_cuisine():
     cuisines = mongo.db.cuisines
-    print (request.form.getlist('recipe_allergens'))
-    #cuisines.insert_one(request.form.to_dict())
+    cuisines.insert_one(request.form.to_dict())
     return redirect(url_for('cookbook'))
     
 #---- Editing a new cuisine
@@ -219,10 +221,12 @@ def the_recipe(recipe_id):
     
 
 #-------------------------------------------------------------- Adding New Recipe
+#---- Add recipe
 @app.route('/add_recipe')
 def add_recipe():
     return render_template('addrecipe.html', categories=mongo.db.categories.find(), difficulty=mongo.db.difficulty.find(), cuisines=mongo.db.cuisines.find(), allergens=mongo.db.allergens.find())
-    
+
+#---- Insert recipe
 @app.route('/inser_recipe', methods=['POST'])
 def insert_recipe():
     recipes = mongo.db.recipes
@@ -242,6 +246,7 @@ def insert_recipe():
 
 #-------------------------------------------------------------- Editing Recipe
 
+# ------Editing recipe
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     the_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -252,6 +257,7 @@ def edit_recipe(recipe_id):
     #print (all_allergens['allergen_name'])
     return render_template('editrecipe.html', recipe=the_recipe, categories=all_categories, cuisines=all_cuisines, difficulty=all_difficulties, allergens=all_allergens)
 
+#------Updating recipe
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
     recipes = mongo.db.recipes

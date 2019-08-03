@@ -1,5 +1,8 @@
 # HERE IS AN EXAMPLE SCHEMA TO CREATE IN MONGODB
 
+#{% if allergen['allergen_name'] == recipe['recipe_allergens'][0] %}
+#<p>{{allergen['allergen_name']}} -----{{recipe['recipe_allergens']}}</p>
+
 # Recipe Schema:
     
 # {

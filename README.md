@@ -40,10 +40,13 @@ Then the site should also display the recipes by level of difficulty.
 a list of recipes is displayed. Then the website should display the recipes in 
 order following a criteria such as number of views.
 
--As a user I would like to know as much as possible about the recipe I am interested in.
+- As a user I would like to know as much as possible about the recipe I am interested in.
+Then the website should give all relevant information about the requested recipe in 
+a format that be friendly to the user.
 
--As a user, I would like to check their facebook, twitter or instagram. The
-website should allow me to visit also those sites.
+- As a user, I would like to follow up this website through social media (pinterest, 
+twitter or instagram) So I can be updated of new recipes or to know what the communuty is doing.
+Then the website should contain link that allow the user to check its available social media.
 
 
 
@@ -52,95 +55,99 @@ find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
 
 ## Features
 
-The 
-database schema based on recipes, and any other related properties and entities 
-(e.g. views, upvotes, ingredients, recipe authors, allergens, author’s country of
-origin, cuisine etc…).
-the backend code to group and summarise the recipes on the site, based on their
-attributes such as cuisine, country of origin, allergens, ingredients, etc. and 
-a frontend page to show this summary, and make the categories clickable to dril
-l down into a filtered view based on that category. This frontend 
-Create the backend code to retrieve a list of recipes, filtered based on various
-criteria (e.g. allergens, cuisine, etc…) and order them based on some reasonable
-aspect (e.g. number of views or upvotes). Create a frontend page to display these,
-and to show some summary statistics around the list (e.g. number of matching 
-recipes, number of new recipes. Optionally, add support for pagination, when the 
-number of results is large
-Create a detailed view for each recipes, that would just show all attributes for
-that recipe, and the full preparation instructions
-Allow for editing and deleting of the recipe records, either on separate pages,
-or built into the list/detail pages
-
+This project works with databases collections (mongoDB Atlas). The backend of the 
+project is centered in the app.py, from there are made all the routes of the priject.
+The principal template of this project is the cookbook.html.  All the general html
+code is donde in the base.html template, this one is share by all the other templates
+through the use of block-contents.
 
 
 ### Existing Features
 
-Routes:
+**app.py** (backend) Here are imported all the neccesary libraries in order to make the 
+caractheristics of the project work. There are a total of 24 routes, together they 
+help to render templates, redirect to other template of make calculus of variables.
+- Imported: os, from flask imported Flask, render_template, redirect, request, url_for. From flask_pymongo imported PyMongo. From bson.objectid imported ObjectId. From datetime imported datetime.
+- Routes: 
+ * '/cookbook': Home website
+ * '/number_of_recipes_by_category': Calculating the number of recipe by each category.
+ * '/add_category': Add new category.
+ * '/inser_category', methods=['POST']: Inserting new category.
+ * '/edit_category/<category_id>': Editing a new category.
+ * '/update_category/<category_id>', methods=["POST"]: Updating a  category.
+ * '/delete_category/<category_id>': Deleting a  category.
+ * '/number_of_recipes_by_cuisine':  Calculating the number of recipe by each cuisine.
+ * '/add_cuisine': Adding a new cuisine.
+ * '/inser_cuisine', methods=['POST']: Inserting a new cuisine.
+ * '/edit_cuisine/<cuisine_id>': Editing a new cuisine.
+ * '/update_cuisine/<cuisine_id>', methods=["POST"]: Updating a  cuisine.
+ * '/delete_cuisine/<cuisine_id>': Deleting a  cuisine.
+ * '/number_of_recipes_by_difficulty': Calculating the number of recipe by levels of difficulty.
+ * '/get_recipes_by_category/<category_id>': Display of Recipes by category.
+ * '/get_recipes_by_cuisine/<cuisine_id>': Display of Recipe by cuisine.
+ * '/get_recipes_by_difficulty/<difficulty_id>': Display of Recipes by Difficulty Level.
+ * '/all_recipes': Display of all recipes.
+ * '/the_recipe/<recipe_id>': Display of the requested reciped.
+ * '/add_recipe': Adding New Recipe.
+ * '/inser_recipe', methods=['POST']: Insertin a new recipe.
+ * '/edit_recipe/<recipe_id>': Editing Recipe.
+ * '/update_recipe/<recipe_id>', methods=["POST"]: Updating recipe.
+ * '/delete_recipe/<recipe_id>': Deleting recipe.
 
-index
-/cookbook --> cookbook() -->render template to cookbook.html
 
-Recipes
-/all_recipes --> all_recipes() --> render template to allrecipes.html
-/add_recipe --> add_recipe() --> render template to addrecipe.html
-/the_recipe/<recipe_id>  -->  the_recipe(recipe_id) --> render template to recipe.html
-/inser_recipe', methods=['POST'] --> insert_recipe() --> redirect to cookbook.html
-/edit_recipe/<recipe_id> --> edit_recipe(recipe_id) --> render template to editrecipe.html
-/update_recipe/<recipe_id>, methods=["POST"] -->update_recipe(recipe_id)--> redirect to  cookbook.html
-/delete_recipe/<recipe_id> --> delete_recipe(recipe_id) ---> redirect to cookbook.html
+**templates** There are 13 html templates. Each of them displays a different functionality
+of this website.
+- base: it has all the rehusable html that is share to all the other templates. Here 
+ it is contained the navbar and the footer, here is added all the style-sheets and 
+scripts.  The navbar allows the user to navegate through the different sections of the 
+cookbook template, to check directly all recipes and/or add a new recipe. The footer
+contains links to social media and copy-right text.
+- cookbook: It is the home of the site.It has 5 sections
+   * Home: Welcome to the website and invitation to the user to know 'what do they would like to eat today?
+   * Newest and most viewed recipes: Each of the list contains the 3 recipes most relevant to the respective category.
+   * Categories: Here a list of the current categories with recipes is displayed in order of more number of recipes to the less. If the category is empty won't be displayed.
+   * Cuisinesies: Here a list of the current cuisines with recipes is displayed in order of more number of recipes to the less. If the cuisine is empty won't be displayed.
+   * Dfficulty level: Here a list of the difficulty levels is displayed in order of more number of recipes to the less. 
 
-Categories
-/get_recipes_by_category/<category_id> --> get_recipes_by_category(category_id) --> render_template to recipesbycategory.html
-/add_category -->add_category() --> render_template to addcattegory.html
-/inser_category, methods=['POST'] -->inser_category() ---> redirect  to cookbook.html
-/edit_category/<category_id> --> edit_category(category_id) --> render template to editcategory.html
-/update_category/<category_id>, methods=["POST"] --> update_category(category_id) -->redirect  to cookbook.html
-/delete_category/<category_id> --> delete_category(category_id) -->redirect  to cookbook.html
+- addcategory / addcuisine / addrecipe: All of them allow to the user to add the 
+ respective feature. Each template gives the option to save or cancel the action.
+    * addcategory: The user is requested to write the name for the new category. The number of recipes variable is fixed to 0 automatically.
+    * addcuisine: The user is requested to write the name for the new cuisine type. The number of recipes variable is fixed to 0 automatically.
+    * addrecipe: the user is requested to fill a form where he/she has to give the Recipe Name, Author, Author Country of Origin, Category, Cuisine, Description, Portions, Level of difficulty, Possible allergens, Ingredients, Image url and method. Variables such as timestamp or views are fixated automatically.
+- allrecipes / recipesbycategory / recipesbycuisine / recipesbydifficulty: Display  of each criteria recipes a list  based on the number of views. The user can view, edit and/or delete the recipe. 
+- editcategory / editcuisine / editrecipe: Edit the selected feature. The user can save chamges or cancel the action
+- recipe: display the actual recipe.
 
-Cuisines
-/get_recipes_by_cuisine/<cuisine_id> --> get_recipes_by_cuisine(cuisine_id)--> render_template to recipesbycuisine.html
-/add_cuisine --> add_cuisine() --> render_template to addcuisine.html
-/inser_cuisine', methods=['POST'] --> insert_cuisine() --> redirect  to cookbook.html
-/edit_cuisine/<cuisine_id> --> edit_cuisine(cuisine_id) --> render_template to editcuisine.html
-/update_cuisine/<cuisine_id>', methods=["POST"] --> update_cuisine(cuisine_id) --> redirect  to cookbook.html
-/delete_cuisine/<cuisine_id> --> delete_cuisine(cuisine_id) --> redirect  to cookbook.html
+**style** The bootstrap library was used to apply style. Besides there is the own style.
+The project was made considering the "first small screen" principle, from there it
+was adapted to larger sizes of screens.
 
-Difficulty Level
+**JavaScript** The project content the neccesary JS to make its components to work.
+Some come from the bootstrap/ bootstrap-select functionality. There is also own JS 
+to make the add/ edit recipe form works.
+- Ingredients Add: jQuery that allow user to add a new ingredient to the list of ingredients
+- Method Add: jQuery that allow user to add a new steep in to the method.
+
 
 ## Technologies Used
 
-This project was made with HTML5, CSS3, JavaScript and python. Besides those, the following tools were used:
+This project was made with HTML5, CSS3, JavaScript and python3. Besides those, the following tools were used:
 
-Language: English.
+- Language: English.
+- MongoDB Atlas [Link](https://www.mongodb.com/)
+- Heroku  [Link](https://www.heroku.com/)
+- Jinja 2.10 [Link](http://jinja.pocoo.org/docs/2.10/)
 
-MongoDB Atlas
-https://www.mongodb.com/
-
-Heroku
-https://www.heroku.com/
-
-Jinja 2.10
-http://jinja.pocoo.org/docs/2.10/
 
 Libraries: 
-Bootstrap v4.3.1 scripts (JavaScript, jQuery and Popper.js) to get functionality 
-in the Bootstrap's components, and css  for most of the applied style
-https://getbootstrap.com/docs/4.3/getting-started/introduction/
-
-Bootstrap-Select v1.13.9 scripts and css to have a more interective and styled 
-select bottom https://developer.snapappointments.com/bootstrap-select/
-
-Fontawesome Version 5.9.0  https://fontawesome.com/
+- Bootstrap v4.3.1 scripts (JavaScript, jQuery and Popper.js) to get functionality in the Bootstrap's components, and css  for most of the applied style [Link](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
+- Bootstrap-Select v1.13.9 scripts and css to have a more interective and styled select bottom. [Link](https://developer.snapappointments.com/bootstrap-select/)
+- Fontawesome Version 5.9.0  [Link](https://fontawesome.com/).
+- Google Fonts, from here it is got the font type of the whole website ('Charm', cursive). [Link](https://fonts.google.com/specimen/Charm).
 
 
-Google Fonts, from here it is got the font type of the whole website 
-('Charm', cursive) 
-https://fonts.google.com/specimen/Charm
-
-Own CSS style sheet. To make my own styles and overwrite some of the Bootstrap 
-style library.
-Own JavaScript file. To make the functionality of the add/remove ingredients and 
-steeps in the method, also to change the color of the heart icom for the 'likes' .
+Own CSS style sheet. To make my own styles and overwrite some of the Bootstrap style library.
+Own JavaScript file. To make the functionality of the add/remove ingredients and steeps in the method, also to change the color of the heart icom for the 'likes' .
 
 ## Testing
 The whole code (html & CSS) was validated through the Markup Validation Service
