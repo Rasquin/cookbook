@@ -4,6 +4,7 @@ Data Centric Development Milestone Project. This consist of a data-driven web ap
 The  backend code and frontend form allow users to access, add, edit, store and delete 
 cooking recipes, types of categories and cuisines.
 
+This project is deployed at [Link](https://monicas-cookbook.herokuapp.com/)
 
 
 ## UX
@@ -201,7 +202,8 @@ Result of evaluation with JSHint:
 
 
 ## Deployment
-This project is available in Github platform under the name of project-2-CCS [Link](https://www.mongodb.com/)
+This project is available in Github platform under the name of [Link](https://github.com/Rasquin/cookbook)
+ This project is available in Heroku  platform under the name of  [Link]( https://git.heroku.com/monicas-cookbook.git)
 
 
 The wareframes are located in assets/wareframes/wireframeXS.pdf for xs wireframe [Link](https://www.mongodb.com/)
@@ -209,24 +211,25 @@ and assets/wareframes/wireframeXL.pdf for xl wireframe.
 
 
 
-You can check this project in the next URL [Link](https://www.mongodb.com/)
+You can check this project in the next URL [Link](https://monicas-cookbook.herokuapp.com/ )
 
 
 ## Credits
 ### Content
-Text of Caracas Get to know our city was got from [Link](https://www.mongodb.com/)
-Slow cooker chicken casserole [Link](https://www.bbcgoodfood.com/recipes/slow-cooker-chicken-casserole)
-Pineapple & lime mocktail [Link](https://www.bbcgoodfood.com/recipes/shine-light)
-Sponge cake   [Link](https://www.bbcgoodfood.com/recipes/sponge-cake)
-Ponche Crema Venezuelan Eggnog  [Link](https://thecookwaregeek.com/ponche-crema-venezuelan-eggnog/)
-Caesar Salad [Link](https://www.simplyrecipes.com/recipes/caesar_salad/)
-Venezuelan Tamales (Hallacas) [Link](https://www.myrecipes.com/recipe/venezuelan-tamales)
-Chinese Steamed Rice Cake—Bai Tang Gao  [Link](https://www.chinasichuanfood.com/chinese-rice-cake-bai-tang-gao/)
+The recipes were taken from the next places:
+- Slow cooker chicken casserole [Link](https://www.bbcgoodfood.com/recipes/slow-cooker-chicken-casserole)
+- Pineapple & lime mocktail [Link](https://www.bbcgoodfood.com/recipes/shine-light)
+- Sponge cake   [Link](https://www.bbcgoodfood.com/recipes/sponge-cake)
+- Ponche Crema Venezuelan Eggnog  [Link](https://thecookwaregeek.com/ponche-crema-venezuelan-eggnog/)
+- Caesar Salad [Link](https://www.simplyrecipes.com/recipes/caesar_salad/)
+- Venezuelan Tamales (Hallacas) [Link](https://www.myrecipes.com/recipe/venezuelan-tamales)
+- Chinese Steamed Rice Cake—Bai Tang Gao  [Link](https://www.chinasichuanfood.com/chinese-rice-cake-bai-tang-gao/)
+- Chicken with rice /  Spanish Style [Link](https://mommyshomecooking.com/chicken-with-rice-spanish-style-arroz-con-pollo/)
 
 ### Media
 The photos used in this project are labelled  for reuse.
-The imagen for Good_Food_Display can be found at  [Link](https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg)
-The imagen condiments.jpg can be found at  [Link](https://pixabay.com/tr/photos/pazar-baharat-%C3%A7e%C5%9Fniler-2380566/)
+- The imagen for Good_Food_Display can be found at  [Link](https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg)
+- The imagen condiments.jpg can be found at  [Link](https://pixabay.com/tr/photos/pazar-baharat-%C3%A7e%C5%9Fniler-2380566/)
 
 
 ## Acknowledgements

@@ -103,8 +103,8 @@
                     {% for allergen in allergens %}
                     
                     <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}"data-width="100%"/>
-                    
                     <label for="{{allergen.allergen_name}}" class="font-weight-bold">{{allergen.allergen_name}}</label>
+                    
                     {% endfor %}
                 </div>
             </div>

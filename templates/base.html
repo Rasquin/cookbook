@@ -47,7 +47,7 @@
                             <a class="dropdown-item" href="/#newest_recipes">New Recipes</a>
                             <a class="dropdown-item" href="/#most_viewed_recipes">Most viewed Recipes</a>
                             <a class="dropdown-item" href="{{url_for('all_recipes')}}" target="_blank">All Recipes</a>
-                            <a class="dropdown-item" href="{{url_for('add_recipe')}}" target="_blank">Add Recipe</a>
+                            <a class="dropdown-item" href="{{url_for('add_recipe')}}" target="_blank">+ Add Recipe</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -137,7 +137,7 @@
                m.preventDefault();
                if (number_of_method < max_method) { //max input box allowed
                    number_of_method++; //text box increment
-                   $(wrapper_method).append('<textarea class="form-control"  name="method" required rows="2" placeholder="Steep"></textarea><a href="#" class="remove_method">Remove</a>'); //add input box
+                   $(wrapper_method).append('<div><textarea class="form-control"  name="method" required rows="2" placeholder="Steep"></textarea><a href="#" class="remove_method">Remove</a></div>'); //add input box
                }
            });
    
