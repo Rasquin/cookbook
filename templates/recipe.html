@@ -16,7 +16,7 @@
   <!-- ---------Recipe Name, views & likes -->
   <div class="row  container-fluid border-top border-bottom">
     <div class="col-12">
-      <h3>{{recipe.recipe_name}} - <spam class="font-italic">{{recipe.views}}  <i class="far fa-eye"></i></spam></h3>
+      <h3>{{recipe.recipe_name}} - {{recipe.views}}  <i class="far fa-eye"></i></h3>
     </div>
   </div>
   
@@ -98,24 +98,6 @@
     </div>
   </div>
   
-  
-  <div class="row">
-    <div class="col-12"></div>
-  </div>
-  
-  
-  
-  <div class="d-none">
-    
-    {{recipe.tips}}
-    {{recipe.likes}}
-    {{recipe.dislikes}}
-   
-  </div>    
-    
 </div>
-
     
 {% endblock %}
-  
-  <!-- ----------------------------------------------------- SCRIPTS

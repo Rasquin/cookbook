@@ -25,7 +25,7 @@
 
 <div class="row container-fluid container-add-recipe bg-soft-yellow">
 
-    <form action="{{ url_for('insert_recipe')}}" method="POST" class="col-12">
+    <form action="{{ url_for('insert_recipe')}}" novalidate method="POST" class="col-12">
         
         <!-- ----------------------------------Elements Filled by the the user -->
         
@@ -102,7 +102,7 @@
                      
                     {% for allergen in allergens %}
                     
-                    <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}"data-width="100%"/>
+                    <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}"  data-width="100%"/>
                     <label for="{{allergen.allergen_name}}" class="font-weight-bold">{{allergen.allergen_name}}</label>
                     
                     {% endfor %}
@@ -117,7 +117,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-12">
-                            <label for="ingredients" class="font-weight-bold">Ingredients</label>
+                            <label  class="font-weight-bold">Ingredients</label>
                         </div>
                     </div>
                     <div class="input_ingredient_wrap">

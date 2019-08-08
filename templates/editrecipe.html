@@ -3,7 +3,7 @@
 {% block content %}
 
 <!-- -------------------------------------------------------------Title  Section -->
-<div class="container-fluid add-recipe-title-container">
+<div class="container-fluid add-title-container ">
 
     <div class="container-fluid">
 
@@ -47,7 +47,6 @@
             <label for="author_country" class="font-weight-bold">Author Country of Origin</label>
             <input type="text" class="form-control" id="author_country" name="author_country" required value="{{recipe.author_country}}">
         </div>
-        
 
         <!-- ---------Recipe Category -->
         <div class="form-group">
@@ -137,7 +136,7 @@
                 <div class="form-group">
                     <div class="row">
                         <div class="col-12">
-                            <label for="ingredients" class="font-weight-bold">Ingredients</label>
+                            <label  class="font-weight-bold">Ingredients</label>
                         </div>
                     </div>
                     <div class="input_ingredient_wrap">
@@ -173,7 +172,7 @@
         <div class="form-group">
             <div class="row">
                 <div class="col-12">
-                    <label for="method" class="font-weight-bold">Method</label>
+                    <label  class="font-weight-bold">Method</label>
                 </div>
             </div>
             <div class="input_method_wrap">
@@ -186,7 +185,7 @@
                     {% for step in recipe.method %}
                         <div class="col-12">
                          
-                            <div><textarea class="form-control" id="method" name="method" required rows="2">{{step}}</textarea> <a href="#" class="remove_method">Remove</a></div>
+                            <div><textarea class="form-control"  name="method" required rows="2">{{step}}</textarea> <a href="#" class="remove_method">Remove</a></div>
                         </div>  
                     {% endfor %}
                 </div>

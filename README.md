@@ -65,31 +65,30 @@ caractheristics of the project work. There are a total of 24 routes, together th
 help to render templates, redirect to other template of make calculus of variables.
 - Imported: os, from flask imported Flask, render_template, redirect, request, url_for. From flask_pymongo imported PyMongo. From bson.objectid imported ObjectId. From datetime imported datetime.
 - Routes: 
- * '/cookbook': Home website
- * '/number_of_recipes_by_category': Calculating the number of recipe by each category.
- * '/add_category': Add new category.
- * '/inser_category', methods=['POST']: Inserting new category.
- * '/edit_category/<category_id>': Editing a new category.
- * '/update_category/<category_id>', methods=["POST"]: Updating a  category.
- * '/delete_category/<category_id>': Deleting a  category.
- * '/number_of_recipes_by_cuisine':  Calculating the number of recipe by each cuisine.
- * '/add_cuisine': Adding a new cuisine.
- * '/inser_cuisine', methods=['POST']: Inserting a new cuisine.
- * '/edit_cuisine/<cuisine_id>': Editing a new cuisine.
- * '/update_cuisine/<cuisine_id>', methods=["POST"]: Updating a  cuisine.
- * '/delete_cuisine/<cuisine_id>': Deleting a  cuisine.
- * '/number_of_recipes_by_difficulty': Calculating the number of recipe by levels of difficulty.
- * '/get_recipes_by_category/<category_id>': Display of Recipes by category.
- * '/get_recipes_by_cuisine/<cuisine_id>': Display of Recipe by cuisine.
- * '/get_recipes_by_difficulty/<difficulty_id>': Display of Recipes by Difficulty Level.
- * '/all_recipes': Display of all recipes.
- * '/the_recipe/<recipe_id>': Display of the requested reciped.
- * '/add_recipe': Adding New Recipe.
- * '/inser_recipe', methods=['POST']: Insertin a new recipe.
- * '/edit_recipe/<recipe_id>': Editing Recipe.
- * '/update_recipe/<recipe_id>', methods=["POST"]: Updating recipe.
- * '/delete_recipe/<recipe_id>': Deleting recipe.
-
+   * '/cookbook': Home website
+   * '/number_of_recipes_by_category': Calculating the number of recipe by each category.
+   * '/add_category': Add new category.
+   * '/inser_category', methods=['POST']: Inserting new category.
+   * '/edit_category/<category_id>': Editing a new category.
+   * '/update_category/<category_id>', methods=["POST"]: Updating a  category.
+   * '/delete_category/<category_id>': Deleting a  category.
+   * '/number_of_recipes_by_cuisine':  Calculating the number of recipe by each cuisine.
+   * '/add_cuisine': Adding a new cuisine.
+   * '/inser_cuisine', methods=['POST']: Inserting a new cuisine.
+   * '/edit_cuisine/<cuisine_id>': Editing a new cuisine.
+   * '/update_cuisine/<cuisine_id>', methods=["POST"]: Updating a  cuisine.
+   * '/delete_cuisine/<cuisine_id>': Deleting a  cuisine.
+   * '/number_of_recipes_by_difficulty': Calculating the number of recipe by levels of difficulty.
+   * '/get_recipes_by_category/<category_id>': Display of Recipes by category.
+   * '/get_recipes_by_cuisine/<cuisine_id>': Display of Recipe by cuisine.
+   * '/get_recipes_by_difficulty/<difficulty_id>': Display of Recipes by Difficulty Level.
+   * '/all_recipes': Display of all recipes.
+   * '/the_recipe/<recipe_id>': Display of the requested reciped.
+   * '/add_recipe': Adding New Recipe.
+   * '/inser_recipe', methods=['POST']: Insertin a new recipe.
+   * '/edit_recipe/<recipe_id>': Editing Recipe.
+   * '/update_recipe/<recipe_id>', methods=["POST"]: Updating recipe.
+   * '/delete_recipe/<recipe_id>': Deleting recipe.
 
 **templates** There are 13 html templates. Each of them displays a different functionality
 of this website.
@@ -179,16 +178,15 @@ dict['attribute']
 - favicon.ico:1 GET https://rasquin.github.io/favicon.ico 404  Solved by creating an icon and uploading it into the site.
 
 Problems found by the code validator and solved:
-. CSS: no errors
+- CSS: no errors
+- HTML: It is the home of the site.It has 5 sections
+   *  Error: Stray end tag div. Fixed deleting the extra </div>
+   *  Error: Element spam not allowed as child of element h3 in this context. The spam wasnt really neccesary, so it was taken out.
+   *  Error: Duplicate ID method. Delete the duplicated ids, they resulted to be unnecessaries.
 
 Problems found by the code validator and NO solved (HTML):
-- Error: Non-space characters found without seeing a doctype first. Expected <!DOCTYPE html>.
-- Error: Element head is missing a required instance of child element title.
-- Error: Bad value {{url_for('the_recipe', recipe_id=recipe._id)}} for attribute href on element a: Illegal character in path segment: { is not allowed.
-- Error: Text not allowed in element ol in this context.
-- Error: Text not allowed in element ul in this context.
+
 - Error: The element a must not appear as a descendant of the button element.
-- Error: Text not allowed in element select in this context.
 - Warning: The document is not mappable to XML 1.0 due to two consecutive hyphens in a comment.
 - Warning: The type attribute is unnecessary for JavaScript resources.
 
@@ -199,7 +197,7 @@ Result of evaluation with JSHint:
 
 
 ## Deployment
-- This project is available in Github platform under the name of Cookbook [Link](https://github.com/Rasquin/cookbook)
+- This project is available in Github platform under the name of  [Cookbook](https://github.com/Rasquin/cookbook)
 - This project is available in Heroku  platform under the name of  monicas-cookbook [Link](https://git.heroku.com/monicas-cookbook.git)
 
 
@@ -219,6 +217,7 @@ The recipes were taken from the next places:
 - Venezuelan Tamales (Hallacas) [Link](https://www.myrecipes.com/recipe/venezuelan-tamales)
 - Chinese Steamed Rice Cake—Bai Tang Gao  [Link](https://www.chinasichuanfood.com/chinese-rice-cake-bai-tang-gao/)
 - Chicken with rice /  Spanish Style [Link](https://mommyshomecooking.com/chicken-with-rice-spanish-style-arroz-con-pollo/)
+- Watermelon & Feta Salad [Link](https://www.jamieoliver.com/recipes/fruit-recipes/watermelon-feta-salad/)
 
 ### Media
 The photos used in this project are labelled  for reuse.
