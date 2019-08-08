@@ -49,17 +49,12 @@ a format that be friendly to the user.
 twitter or instagram) So I can be updated of new recipes or to know what the communuty is doing.
 Then the website should contain link that allow the user to check its available social media.
 
-
-
-The wireframes of this project were made with microsoft powerpoint 2010. You can
-find them in https://github.com/Rasquin/project-2-CCS/tree/master/wireframes
-
 ## Features
 
 This project works with databases collections (mongoDB Atlas). The backend of the 
 project is centered in the app.py, from there are made all the routes of the priject.
 The principal template of this project is the cookbook.html.  All the general html
-code is donde in the base.html template, this one is share by all the other templates
+code is donde in the base.html template, this one is shared by all the other templates
 through the use of block-contents.
 
 
@@ -129,7 +124,10 @@ to make the add/ edit recipe form works.
 - Ingredients Add: jQuery that allow user to add a new ingredient to the list of ingredients
 - Method Add: jQuery that allow user to add a new steep in to the method.
 
-
+### Features Left to Implement
+ Authrntification and pagination
+ 
+ 
 ## Technologies Used
 
 This project was made with HTML5, CSS3, JavaScript and python3. Besides those, the following tools were used:
@@ -168,7 +166,6 @@ print (index,category['category_name'])
 
 
 Problems unsolved:
-- The list of recipes by categories is not displayed in order descendant order
 - When adding or editing a recipe, if 'none' option of allergens is selected, the other options can still be selected.
 
 Problems solved:
@@ -202,16 +199,13 @@ Result of evaluation with JSHint:
 
 
 ## Deployment
-This project is available in Github platform under the name of [Link](https://github.com/Rasquin/cookbook)
- This project is available in Heroku  platform under the name of  [Link]( https://git.heroku.com/monicas-cookbook.git)
+- This project is available in Github platform under the name of Cookbook [Link](https://github.com/Rasquin/cookbook)
+- This project is available in Heroku  platform under the name of  monicas-cookbook [Link](https://git.heroku.com/monicas-cookbook.git)
 
 
-The wareframes are located in assets/wareframes/wireframeXS.pdf for xs wireframe [Link](https://www.mongodb.com/)
-and assets/wareframes/wireframeXL.pdf for xl wireframe.
+- The wireframes are located in static/wireframes/  [Link](https://github.com/Rasquin/cookbook/tree/master/static/wireframes)
 
-
-
-You can check this project in the next URL [Link](https://monicas-cookbook.herokuapp.com/ )
+- You can check this project in the next  [Link](https://monicas-cookbook.herokuapp.com/ )
 
 
 ## Credits
