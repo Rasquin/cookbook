@@ -39,7 +39,7 @@
           <ol class="list-group list-group-flush"> 
             {% for recipe in newest_recipes %}
             <li class="list-group-item">
-              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}" target="_blank"><strong>{{recipe.recipe_name}} - {{recipe.timestamp}}</strong></a>
+              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}} - {{recipe.timestamp}}</strong></a>
             </li>
             {% endfor %}
           </ol>
@@ -60,7 +60,7 @@
           <ol class="list-group list-group-flush"> 
             {% for recipe in most_viewed_recipes %}
             <li class="list-group-item">
-              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}" target="_blank"><strong>{{recipe.recipe_name}} - {{recipe.views}} views</strong></a>
+              <a href="{{url_for('the_recipe', recipe_id=recipe._id)}}"><strong>{{recipe.recipe_name}} - {{recipe.views}} views</strong></a>
             </li>
             {% endfor %}
           </ol>
@@ -75,7 +75,6 @@
 
 
 <!-- -------------------------------------------------------------Filter by Category Section -->
-
 <div class="container-section-home bg-soft-yellow" id="recipes_by_category">
     <div class="row container-fluid">
       
@@ -93,7 +92,7 @@
           <li class="list-group-item">
             <div class="row">
               <div class="col-12 col-md-8">
-                <a href="{{url_for('get_recipes_by_category', category_id=category._id)}}" target="_blank" class="text-decoration-none"><strong>{{category.category_name}} </strong> - {{category.number_of_recipes}}</a>
+                <a href="{{url_for('get_recipes_by_category', category_id=category._id)}}" class="text-decoration-none"><strong>{{category.category_name}} </strong> - {{category.number_of_recipes}}</a>
               </div>
               <div class="col-12 col-md-4">
                
@@ -126,7 +125,6 @@
   </div>
 
 <!-- -------------------------------------------------------------Filter by Cuisine Section -->
-
 <div class="container-section-home bg-white" id="recipes_by_cuisine">
     <div class="row container-fluid">
       
@@ -139,7 +137,7 @@
           <li class="list-group-item">
             <div class="row">
               <div class="col-12 col-md-8">
-                <a href="{{url_for('get_recipes_by_cuisine', cuisine_id=cuisine._id)}}" target="_blank" class="text-decoration-none"><strong>{{cuisine.cuisine_name}} </strong> - {{cuisine.number_of_recipes}}</a>
+                <a href="{{url_for('get_recipes_by_cuisine', cuisine_id=cuisine._id)}}" class="text-decoration-none"><strong>{{cuisine.cuisine_name}} </strong> - {{cuisine.number_of_recipes}}</a>
               </div>
               <div class="col-12 col-md-4">
                
@@ -191,7 +189,7 @@
         <li class="list-group-item">
           <div class="row">
             <div class="col-12">
-              <a href="{{url_for('get_recipes_by_difficulty', difficulty_id=difficulty._id)}}" target="_blank" class="text-decoration-none"><strong>{{difficulty.level}} </strong> - {{difficulty.number_of_recipes}}</a>
+              <a href="{{url_for('get_recipes_by_difficulty', difficulty_id=difficulty._id)}}" class="text-decoration-none"><strong>{{difficulty.level}} </strong> - {{difficulty.number_of_recipes}}</a>
             </div>
           </div>
         </li>

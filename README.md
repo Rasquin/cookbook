@@ -4,7 +4,7 @@ Data Centric Development Milestone Project. This consist of a data-driven web ap
 The  backend code and frontend form allow users to access, add, edit, store and delete 
 cooking recipes, types of categories and cuisines.
 
-This project is deployed at [Link](https://monicas-cookbook.herokuapp.com/)
+This project is deployed at [Heroku](https://monicas-cookbook.herokuapp.com/)
 
 
 ## UX
@@ -124,7 +124,8 @@ to make the add/ edit recipe form works.
 - Method Add: jQuery that allow user to add a new steep in to the method.
 
 ### Features Left to Implement
- Authrntification and pagination
+- Authentification of user, then only the registered user would be allowed to add recipes. And the site administrator would be to only one who could be able to delete or edit recipes.
+- Pagination: eventually the site will gorup up and pagination for the recipes would be neccesary.
  
  
 ## Technologies Used
@@ -132,23 +133,23 @@ to make the add/ edit recipe form works.
 This project was made with HTML5, CSS3, JavaScript and python3. Besides those, the following tools were used:
 
 - Language: English.
-- MongoDB Atlas [Link](https://www.mongodb.com/)
-- Heroku  [Link](https://www.heroku.com/)
-- Jinja 2.10 [Link](http://jinja.pocoo.org/docs/2.10/)
+- [MongoDB Atlas](https://www.mongodb.com/)
+- [Heroku](https://www.heroku.com/)
+- [Jinja 2.10](http://jinja.pocoo.org/docs/2.10/)
 
 
 Libraries: 
-- Bootstrap v4.3.1 scripts (JavaScript, jQuery and Popper.js) to get functionality in the Bootstrap's components, and css  for most of the applied style [Link](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
-- Bootstrap-Select v1.13.9 scripts and css to have a more interective and styled select bottom. [Link](https://developer.snapappointments.com/bootstrap-select/)
-- Fontawesome Version 5.9.0  [Link](https://fontawesome.com/).
-- Google Fonts, from here it is got the font type of the whole website ('Charm', cursive). [Link](https://fonts.google.com/specimen/Charm).
+- [Bootstrap v4.3.1](https://getbootstrap.com/docs/4.3/getting-started/introduction/) scripts (JavaScript, jQuery and Popper.js) to get functionality in the Bootstrap's components, and css  for most of the applied style 
+- [Bootstrap-Select v1.13.9](https://developer.snapappointments.com/bootstrap-select/) scripts and css to have a more interective and styled select bottom.
+- [Fontawesome Version 5.9.0](https://fontawesome.com/).
+- [Google Fonts](https://fonts.google.com/specimen/Charm), from here it is got the font type of the whole website ('Charm', cursive).
 
 
 Own CSS style sheet. To make my own styles and overwrite some of the Bootstrap style library.
 Own JavaScript file. To make the functionality of the add/remove ingredients and steeps in the method, also to change the color of the heart icom for the 'likes' .
 
 ## Testing
-The whole code (html & CSS) was validated through the Markup Validation Service [Link](https://validator.w3.org/). The JavaScript was evaluated by JSHint [Link](https://jshint.com/)
+The whole code (html & CSS) was validated through the [Markup Validation Service](https://validator.w3.org/). The JavaScript was evaluated by [JSHint](https://jshint.com/)
 The code was continuously monitored through the "Inspect" function of the Google Chrome Browser. Making sure that the website was completely responsive. The  project looks as expected in different browsers (GoogleChrome, InternetExplorer, Samsung internet).
 
 Testing for the app.py:
@@ -166,6 +167,7 @@ print (index,category['category_name'])
 
 Problems unsolved:
 - When adding or editing a recipe, if 'none' option of allergens is selected, the other options can still be selected.
+- The form is not completely validated before submitting. The user can submit the form without selecting any allergens.
 
 Problems solved:
 - TypeError: 'NoneType' object is not iterable. Solved through making sure the the attribute has no null value, so the object is iterable.
@@ -198,10 +200,10 @@ Result of evaluation with JSHint:
 
 ## Deployment
 - This project is available in Github platform under the name of  [Cookbook](https://github.com/Rasquin/cookbook)
-- This project is available in Heroku  platform under the name of  monicas-cookbook [Link](https://git.heroku.com/monicas-cookbook.git)
+- This project is available in Heroku  platform under the name of [ monicas-cookbook](https://git.heroku.com/monicas-cookbook.git)
 
 
-- The wireframes are located in static/wireframes/  [Link](https://github.com/Rasquin/cookbook/tree/master/static/wireframes)
+- The wireframes are located in [static/wireframes/](https://github.com/Rasquin/cookbook/tree/master/static/wireframes)
 
 - You can check this project in the next  [Link](https://monicas-cookbook.herokuapp.com/ )
 
@@ -209,15 +211,15 @@ Result of evaluation with JSHint:
 ## Credits
 ### Content
 The recipes were taken from the next places:
-- Slow cooker chicken casserole [Link](https://www.bbcgoodfood.com/recipes/slow-cooker-chicken-casserole)
-- Pineapple & lime mocktail [Link](https://www.bbcgoodfood.com/recipes/shine-light)
-- Sponge cake   [Link](https://www.bbcgoodfood.com/recipes/sponge-cake)
-- Ponche Crema Venezuelan Eggnog  [Link](https://thecookwaregeek.com/ponche-crema-venezuelan-eggnog/)
-- Caesar Salad [Link](https://www.simplyrecipes.com/recipes/caesar_salad/)
-- Venezuelan Tamales (Hallacas) [Link](https://www.myrecipes.com/recipe/venezuelan-tamales)
-- Chinese Steamed Rice Cake—Bai Tang Gao  [Link](https://www.chinasichuanfood.com/chinese-rice-cake-bai-tang-gao/)
-- Chicken with rice /  Spanish Style [Link](https://mommyshomecooking.com/chicken-with-rice-spanish-style-arroz-con-pollo/)
-- Watermelon & Feta Salad [Link](https://www.jamieoliver.com/recipes/fruit-recipes/watermelon-feta-salad/)
+- [Slow cooker chicken casserole](https://www.bbcgoodfood.com/recipes/slow-cooker-chicken-casserole)
+- [Pineapple & lime mocktail](https://www.bbcgoodfood.com/recipes/shine-light)
+- [Sponge cake](https://www.bbcgoodfood.com/recipes/sponge-cake)
+- [Ponche Crema Venezuelan Eggnog](https://thecookwaregeek.com/ponche-crema-venezuelan-eggnog/)
+- [Caesar Salad](https://www.simplyrecipes.com/recipes/caesar_salad/)
+- [Venezuelan Tamales (Hallacas)](https://www.myrecipes.com/recipe/venezuelan-tamales)
+- [Chinese Steamed Rice Cake—Bai Tang Gao](https://www.chinasichuanfood.com/chinese-rice-cake-bai-tang-gao/)
+- [Chicken with rice /  Spanish Style](https://mommyshomecooking.com/chicken-with-rice-spanish-style-arroz-con-pollo/)
+- [Watermelon & Feta Salad](https://www.jamieoliver.com/recipes/fruit-recipes/watermelon-feta-salad/)
 
 ### Media
 The photos used in this project are labelled  for reuse.

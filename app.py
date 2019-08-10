@@ -213,7 +213,7 @@ def all_recipes():
 @app.route('/the_recipe/<recipe_id>')
 def the_recipe(recipe_id):
     the_recipe=  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-   # likes(recipe_id)
+   # views(recipe_id)
     the_recipe_views = mongo.db.recipes.update_one({'_id': ObjectId(recipe_id)}, {'$inc': {'views': 1}})
     
     return render_template("recipe.html", recipe=the_recipe)
@@ -230,7 +230,6 @@ def add_recipe():
 def insert_recipe():
     recipes = mongo.db.recipes
     recipe_dict = request.form.to_dict()
-    print (request.form.getlist('recipe_allergens'))
     recipe_dict['recipe_allergens'] = request.form.getlist('recipe_allergens')
     recipe_dict['ingredients'] = request.form.getlist('ingredients')
     recipe_dict['method'] = request.form.getlist('method')

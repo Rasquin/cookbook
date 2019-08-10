@@ -127,7 +127,6 @@
                 </div>
             </div>
         </div>
-        
 
         <!-- ---------Recipe Ingredients & Image area -->
         <div class="row">
@@ -149,7 +148,7 @@
                             {% for ingredient in recipe.ingredients %}
                             <div class="col-12">
                                 
-                                <div><input type="text" name="ingredients" value="{{ ingredient }}"/><a href="#" class="remove_ingredient">Remove</a></div>
+                                <div><input type="text" name="ingredients" required value="{{ ingredient }}"/><a href="#" class="remove_ingredient">Remove</a></div>
                              </div>  
                             {% endfor %}
                             
