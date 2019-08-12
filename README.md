@@ -178,7 +178,6 @@ dict['attribute']
 - TypeError: must be str, not int. Solved through checking the type of att of the dict and converting to int what was needed.
 - TypeError: if no direction is specified, key_or_list must be an instance of list. Solved through changing the format of the sorting from sort({"attribute": 1}) to sort([("attribute", 1)])
 - When editing the <textarea> didn't show the content. I was using wrong the sintaxis. Solved through changing <textarea value="the value"></textarea> to <textarea>the value </textarea>
-- favicon.ico:1 GET https://rasquin.github.io/favicon.ico 404  Solved by creating an icon and uploading it into the site.
 
 Problems found by the code validator and solved:
 - CSS: no errors
