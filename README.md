@@ -2,7 +2,8 @@
 
 Data Centric Development Milestone Project. This consist of a data-driven web application.
 The  backend code and frontend form allow users to access, add, edit, store and delete 
-cooking recipes, types of categories and cuisines.
+cooking recipes, types of categories and cuisines. This cookbook will grow up as the 
+users introduce new data.
 
 This project is deployed at [Heroku](https://monicas-cookbook.herokuapp.com/)
 

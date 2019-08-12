@@ -103,7 +103,7 @@
                     {% for allergen in allergens %}
                     
                     <input type="checkbox" id="{{allergen.allergen_name}}" name="recipe_allergens"  value="{{allergen.allergen_name}}"  data-width="100%"/>
-                    <label for="{{allergen.allergen_name}}" class="font-weight-bold">{{allergen.allergen_name}}</label>
+                    <label  for="{{allergen.allergen_name}}" class="font-weight-bold ">{{allergen.allergen_name}}</label>
                     
                     {% endfor %}
                 </div>
@@ -173,7 +173,7 @@
             <div class="col-12">
                 <p class="text-center">
                     <button class="btn btn-primary" type="submit">Add Recipe</button>
-                    <button class="btn btn-primary"  ><a href="{{ url_for('all_recipes')}}">Cancel</a></button>
+                    <button class="btn btn-primary"  ><a href="{{ url_for('cookbook')}}">Cancel</a></button>
                 </p>
             </div>
         </div>
